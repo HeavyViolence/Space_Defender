@@ -1,0 +1,4 @@
+Version 0.0.1:
+1) Project setup.
+2) Imported and setup Universal Render Pipeline asset.
+3) Imported Input System Asset.
