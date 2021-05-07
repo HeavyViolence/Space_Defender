@@ -1,4 +1,9 @@
-Version 0.0.1:
-1) Project setup.
-2) Imported and setup Universal Render Pipeline asset.
-3) Imported Input System Asset.
+v0.0.1:
+Project setup.
+Imported and setup Universal Render Pipeline asset.
+Imported Input System Asset.
+
+v0.0.2:
+Implemented and tested AuxMath.
+Implemented SceneSingleton<T>
+Implemented PersistentSingletone<T>
