@@ -25,4 +25,6 @@ public static class AuxMath
 
         return Mathf.Lerp(newMin, newMax, t);
     }
+
+    public static float RandomSign => Random.Range(0, int.MaxValue) % 2 == 0 ? 1f : -1f;
 }

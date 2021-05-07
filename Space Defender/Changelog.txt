@@ -6,4 +6,8 @@ Imported Input System Asset.
 v0.0.2:
 Implemented and tested AuxMath.
 Implemented SceneSingleton<T>
-Implemented PersistentSingletone<T>
+Implemented PersistentSingleton<T>
+
+v0.0.3:
+AuxMath functionality expanded.
+Implemented BackgroundScroller.
