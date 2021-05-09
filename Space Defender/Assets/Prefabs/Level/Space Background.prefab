@@ -94,13 +94,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0523ccf23b0974d91682ca20528287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horizontalScrollSpeed: 0.002
+  _horizontalScrollSpeed: 0.001
   _horizontalScrollSpeedRandom: 0.25
   _horizontalScrollDuration: 10
   _horizontalScrollDurationRandom: 0.1
-  _verticalScrollSpeed: 0.005
+  _verticalScrollSpeed: 0.004
   _verticalScrollSpeedRandom: 0.05
   _verticalScrollDuration: 10
   _verticalScrollDurationRandom: 0.1
-  _scrollLerpDuration: 5
-  _ScrollLerpDurationRandom: 0.1
+  _transitionDuration: 5
+  _transitionDurationRandom: 0.25

@@ -1,13 +1,21 @@
 v0.0.1:
-Project setup.
-Imported and setup Universal Render Pipeline asset.
-Imported Input System Asset.
+Project setup
+Imported and setup Universal Render Pipeline asset
+Imported Input System Asset
 
 v0.0.2:
-Implemented and tested AuxMath.
+Implemented and tested AuxMath
 Implemented SceneSingleton<T>
 Implemented PersistentSingleton<T>
 
 v0.0.3:
-AuxMath functionality expanded.
-Implemented BackgroundScroller.
+AuxMath functionality expanded
+Implemented BackgroundScroller
+
+v0.0.4:
+Reimported Background Images and setup unlit materials for them
+Imported sprites
+BackgroundScroller bug fixed
+Player action "fly" is set up and connected
+Implemented CameraHolder
+Implemented MovementConfig and its editor

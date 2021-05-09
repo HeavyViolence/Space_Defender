@@ -3,26 +3,26 @@ using UnityEngine;
 
 public class BackgroundScroller : SceneSingleton<BackgroundScroller>
 {
-    public const float ScrollSpeedMax = 0.01f;
+    public const float MaxScrollSpeed = 0.01f;
 
-    public const float ScrollDurationMin = 4f;
-    public const float ScrollDurationMax = 64f;
+    public const float MinScrollDuration = 4f;
+    public const float MaxScrollDuration = 64f;
 
-    public const float ScrollLerpDurationMin = 2f;
-    public const float ScrollLerpDurationMax = 16f;
+    public const float MinScrollLerpDuration = 2f;
+    public const float MaxScrollLerpDuration = 16f;
 
     [SerializeField] private float _horizontalScrollSpeed = 0f;
     [SerializeField] private float _horizontalScrollSpeedRandom = 0f;
-    [SerializeField] private float _horizontalScrollDuration = ScrollDurationMin;
+    [SerializeField] private float _horizontalScrollDuration = MinScrollDuration;
     [SerializeField] private float _horizontalScrollDurationRandom = 0f;
 
     [SerializeField] private float _verticalScrollSpeed = 0f;
     [SerializeField] private float _verticalScrollSpeedRandom = 0f;
-    [SerializeField] private float _verticalScrollDuration = ScrollDurationMin;
+    [SerializeField] private float _verticalScrollDuration = MinScrollDuration;
     [SerializeField] private float _verticalScrollDurationRandom = 0f;
 
-    [SerializeField] private float _scrollLerpDuration = ScrollLerpDurationMin;
-    [SerializeField] private float _ScrollLerpDurationRandom = 0f;
+    [SerializeField] private float _transitionDuration = MinScrollLerpDuration;
+    [SerializeField] private float _transitionDurationRandom = 0f;
 
     private Renderer _renderer = null;
 
@@ -39,6 +39,7 @@ public class BackgroundScroller : SceneSingleton<BackgroundScroller>
     public float HorizontalScrollDuration => AuxMath.Randomize(_horizontalScrollDuration, _horizontalScrollDurationRandom);
     public float VerticalScrollSpeed => AuxMath.Randomize(_verticalScrollSpeed, _verticalScrollSpeedRandom);
     public float VerticalScrollDuration => AuxMath.Randomize(_verticalScrollDuration, _verticalScrollDurationRandom);
+    public float ScrollLerpDuration => AuxMath.Randomize(_transitionDuration, _transitionDurationRandom);
 
     protected override void Awake()
     {
@@ -83,18 +84,19 @@ public class BackgroundScroller : SceneSingleton<BackgroundScroller>
 
     private IEnumerator HorizontalScroller()
     {
-        float duration = HorizontalScrollDuration;
+        float scrollDuration = HorizontalScrollDuration;
+        float lerpDuration = ScrollLerpDuration;
         float newScrollSpeed = HorizontalScrollSpeed * AuxMath.RandomSign;
         float timer = 0f;
 
         float currentScrollSpeed;
 
-        while (timer < duration)
+        while (timer < scrollDuration)
         {
             timer += Time.deltaTime;
 
             if (_firstHorizontalScroll) currentScrollSpeed = newScrollSpeed;
-            else currentScrollSpeed = Mathf.Lerp(_oldHorizontalScrollSpeed, newScrollSpeed, timer / duration);
+            else currentScrollSpeed = Mathf.Lerp(_oldHorizontalScrollSpeed, newScrollSpeed, timer / lerpDuration);
 
             _renderer.material.mainTextureOffset += new Vector2(currentScrollSpeed * Time.deltaTime, 0f);
 
@@ -109,18 +111,19 @@ public class BackgroundScroller : SceneSingleton<BackgroundScroller>
 
     private IEnumerator VerticalScroller()
     {
-        float duration = VerticalScrollDuration;
+        float scrollDuration = VerticalScrollDuration;
+        float lerpDuration = ScrollLerpDuration;
         float newScrollSpeed = VerticalScrollSpeed; 
         float timer = 0f;
 
         float currentScrollSpeed;
 
-        while (timer < duration)
+        while (timer < scrollDuration)
         {
             timer += Time.deltaTime;
 
             if (_firstVerticalScroll) currentScrollSpeed = newScrollSpeed;
-            else currentScrollSpeed = Mathf.Lerp(_oldVerticalScrollSpeed, newScrollSpeed, timer / duration);
+            else currentScrollSpeed = Mathf.Lerp(_oldVerticalScrollSpeed, newScrollSpeed, timer / lerpDuration);
 
             _renderer.material.mainTextureOffset += new Vector2(0f, currentScrollSpeed * Time.deltaTime);
 
