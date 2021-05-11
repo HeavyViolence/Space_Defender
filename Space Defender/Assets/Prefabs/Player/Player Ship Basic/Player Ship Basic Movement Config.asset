@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852a23395c675de40b2d7f4ad77dd47a, type: 3}
+  m_Name: Player Ship Basic Movement Config
+  m_EditorClassIdentifier: 
+  _xSpeed: 3
+  _xSpeedRandom: 0.02
+  _xSpeedDuration: 0
+  _xSpeedDurationRandom: 0
+  _xSpeedTransitionDuration: 0
+  _xSpeedTransitionDurationRandom: 0
+  _horizontalBoundsOffset: -0.075
+  _ySpeed: 3
+  _ySpeedRandom: 0.02
+  _ySpeedDuration: 0
+  _ySpeedDurationRandom: 0
+  _ySpeedTransitionDuration: 0
+  _ySpeedTransitionDurationRandom: 0
+  _upperBoundOffset: -0.66
+  _lowerBoundOffset: 0.035

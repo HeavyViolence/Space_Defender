@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Movement
 {
-    [SerializeField] private MovementConfig _config = null;
-
     private Rigidbody2D _rb = null;
     private PlayerControls _controls;
 
-    private Vector2 MoveDir => _controls.Player.Fly.ReadValue<Vector2>();
-    private Vector2 CurrentPos => new Vector2(transform.position.x, transform.position.y);
+    public Vector2 MoveDir => _controls.Player.Fly.ReadValue<Vector2>();
+
+    public override Vector2 Velocity => new Vector2(_config.Xspeed, _config.Yspeed) * Time.deltaTime;
 
     private void Awake()
     {
@@ -28,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.MovePosition(CurrentPos + MoveDir);
+        Move();
     }
 
     private Rigidbody2D SetupRigidbody2D()
@@ -47,5 +46,10 @@ public class PlayerMovement : MonoBehaviour
         body.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         return body;
+    }
+
+    protected override void Move()
+    {
+        _rb.MovePosition(CurrentPos + Velocity * MoveDir);
     }
 }

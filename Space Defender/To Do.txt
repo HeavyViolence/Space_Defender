@@ -1,3 +1,2 @@
-Implement IMovable interface
-Implement Movement abstract class
-Inherit and complete PlayerMovement
+Implement player projectiles
+Implement player shooting

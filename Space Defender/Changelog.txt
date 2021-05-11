@@ -19,3 +19,13 @@ BackgroundScroller bug fixed
 Player action "fly" is set up and connected
 Implemented CameraHolder
 Implemented MovementConfig and its editor
+
+v0.0.5:
+Fixed incorrect viewport bound calculation bug in MovementConfig
+Implemented abstract Movement
+AuxMath functionality expanded
+MovementConfig functionality expanded
+Created ship explosion particle system
+Created laser muzzle flash particle system
+Created laser hit particle system
+Created laser trail particle system

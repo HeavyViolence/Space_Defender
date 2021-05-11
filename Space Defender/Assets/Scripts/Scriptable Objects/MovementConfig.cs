@@ -32,16 +32,28 @@ public class MovementConfig : ScriptableObject
 
     public float Xspeed => AuxMath.Randomize(_xSpeed, _xSpeedRandom);
 
+    public float HighestXspeed => AuxMath.RandomCeil(_xSpeed, _xSpeedRandom);
+
+    public float LowestXspeed => AuxMath.RandomFloor(_xSpeed, _xSpeedRandom);
+
     public float XspeedDuration => AuxMath.Randomize(_xSpeedDuration, _xSpeedDurationRandom);
 
+    public float HighestXspeedDuration => AuxMath.RandomCeil(_xSpeedDuration, _xSpeedDurationRandom);
+
+    public float LowestXspeedDuration => AuxMath.RandomFloor(_xSpeedDuration, _xSpeedDurationRandom);
+
     public float XspeedTransitionDuration => AuxMath.Randomize(_xSpeedTransitionDuration, _xSpeedTransitionDurationRandom);
+
+    public float HighestXspeedTransitionDuration => AuxMath.RandomCeil(_xSpeedTransitionDuration, _xSpeedTransitionDurationRandom);
+
+    public float LowestXspeedTransitionDuration => AuxMath.RandomFloor(_xSpeedTransitionDuration, _xSpeedTransitionDurationRandom);
 
     public float LeftBound
     {
         get
         {
-            float leftBoundPos = CameraHolder.Instance.MainCam.ViewportToWorldPoint(-Vector3.right).x;
-            return leftBoundPos + _horizontalBoundsOffset;
+            Vector3 boundVector = new Vector3(0f - _horizontalBoundsOffset, 0f, 0f);
+            return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).x;
         }
     }
 
@@ -49,32 +61,43 @@ public class MovementConfig : ScriptableObject
     {
         get
         {
-            float rightBoundPos = CameraHolder.Instance.MainCam.ViewportToWorldPoint(Vector3.right).x;
-            return rightBoundPos - _horizontalBoundsOffset;
+            Vector3 boundVector = new Vector3(1f + _horizontalBoundsOffset, 0f, 0f);
+            return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).x;
         }
     }
 
     public float Yspeed => AuxMath.Randomize(_ySpeed, _ySpeedRandom);
 
+    public float HighestYspeed => AuxMath.RandomCeil(_ySpeed, _ySpeedRandom);
+
+    public float LowestYspeed => AuxMath.RandomFloor(_ySpeed, _ySpeedRandom);
+
     public float YspeedDuration => AuxMath.Randomize(_ySpeedDuration, _ySpeedDurationRandom);
 
+    public float HighestYspeedDuration => AuxMath.RandomCeil(_ySpeedDuration, _ySpeedDurationRandom);
+
+    public float LowestYspeedDuration => AuxMath.RandomFloor(_ySpeedDuration, _ySpeedDurationRandom);
+
     public float YspeedTransitionDuration => AuxMath.Randomize(_ySpeedTransitionDuration, _ySpeedTransitionDurationRandom);
+
+    public float HighestYspeedTransitionDuration => AuxMath.RandomCeil(_ySpeedTransitionDuration, _ySpeedTransitionDurationRandom);
+
+    public float LowestYspeedTransitionDuration => AuxMath.RandomFloor(_ySpeedTransitionDuration, _ySpeedTransitionDurationRandom);
 
     public float UpperBound
     {
         get
         {
-            float upperBoundPos = CameraHolder.Instance.MainCam.ViewportToWorldPoint(Vector3.up).y;
-            return upperBoundPos + _upperBoundOffset;
+            Vector3 boundVector = new Vector3(0f, 1f + _upperBoundOffset, 0f);
+            return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).y;
         }
     }
     public float LowerBound
-
     {
         get
         {
-            float lowerBoundPos = CameraHolder.Instance.MainCam.ViewportToWorldPoint(-Vector3.up).y;
-            return lowerBoundPos + _lowerBoundOffset;
+            Vector3 boundVector = new Vector3(0f, _lowerBoundOffset, 0f);
+            return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).y;
         }
     }
 }

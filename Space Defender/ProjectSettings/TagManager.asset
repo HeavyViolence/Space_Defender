@@ -13,9 +13,9 @@ TagManager:
   - UI
   - Background
   - Player
-  - 
-  - 
-  - 
+  - Player Projectiles
+  - Enemy Ship
+  - Enemy Projectile
   - 
   - 
   - 
@@ -40,6 +40,21 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1220673625
+    locked: 0
+  - name: Particle Effect
+    uniqueID: 3106775287
+    locked: 0
+  - name: Enemy Projectile
+    uniqueID: 1667009381
+    locked: 0
+  - name: Enemy Ship
+    uniqueID: 588286867
+    locked: 0
+  - name: Player Projectile
+    uniqueID: 1265698533
     locked: 0
   - name: Player
     uniqueID: 4072317175

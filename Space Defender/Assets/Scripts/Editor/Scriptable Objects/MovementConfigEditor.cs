@@ -71,7 +71,7 @@ public class MovementConfigEditor : Editor
         EditorGUILayout.Slider(_xSpeedTransitionDurationRandom, 0f, 1f, "Random Factor");
 
         EditorGUILayout.Separator();
-        EditorGUILayout.Slider(_horizontalBoundsOffset, 0f, 0.5f, "Bounds Offset");
+        EditorGUILayout.Slider(_horizontalBoundsOffset, -0.5f, 0.5f, "Bounds Offset");
 
         EditorGUILayout.Separator();
         EditorGUILayout.LabelField("Vertical Parameters:");
@@ -89,7 +89,7 @@ public class MovementConfigEditor : Editor
         EditorGUILayout.Slider(_ySpeedTransitionDurationRandom, 0f, 1f, "Random Factor");
 
         EditorGUILayout.Separator();
-        EditorGUILayout.Slider(_upperBoundOffset, -0.5f, 0.5f, "Upper Bound Offset");
+        EditorGUILayout.Slider(_upperBoundOffset, -0.75f, 0.5f, "Upper Bound Offset");
         EditorGUILayout.Slider(_lowerBoundOffset, -0.5f, 0.5f, "Lower Bound Offset");
 
         serializedObject.ApplyModifiedProperties();

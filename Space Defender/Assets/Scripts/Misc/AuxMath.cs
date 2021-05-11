@@ -13,6 +13,20 @@ public static class AuxMath
         return value * seed;
     }
 
+    public static float RandomCeil(float value, float factor)
+    {
+        float clampedFactor = Mathf.Clamp01(factor);
+
+        return value * (1f + clampedFactor);
+    }
+
+    public static float RandomFloor(float value, float factor)
+    {
+        float clampedFactor = Mathf.Clamp01(factor);
+
+        return value * (1f - clampedFactor);
+    }
+
     public static bool ValueWithinRange(float value, float min, float max)
     {
         if (value < max - Mathf.Epsilon && value > min + Mathf.Epsilon) return true;
