@@ -1,2 +1,3 @@
-Implement player projectiles
-Implement player shooting
+Implement CameraShaker.
+Implement AudioPlayer with pooling system.
+Implement AudioCollections.

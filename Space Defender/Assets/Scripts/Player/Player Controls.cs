@@ -25,6 +25,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Value"",
+                    ""id"": ""d3a97946-55fd-4f76-b3a6-0bda277846f2"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -82,6 +90,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Fly"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a5d2a1d-915b-4ac8-989e-5d4f4d2a9787"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57c16d3d-a5fa-4857-bc4a-e2402ab0c782"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -108,6 +138,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Fly = m_Player.FindAction("Fly", throwIfNotFound: true);
+        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -158,11 +189,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Fly;
+    private readonly InputAction m_Player_Fire;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Fly => m_Wrapper.m_Player_Fly;
+        public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -175,6 +208,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Fly.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFly;
                 @Fly.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFly;
                 @Fly.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFly;
+                @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -182,6 +218,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Fly.started += instance.OnFly;
                 @Fly.performed += instance.OnFly;
                 @Fly.canceled += instance.OnFly;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
             }
         }
     }
@@ -198,5 +237,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnFly(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
 }

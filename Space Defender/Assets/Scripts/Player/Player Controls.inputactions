@@ -12,6 +12,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Fire",
+                    "type": "Value",
+                    "id": "d3a97946-55fd-4f76-b3a6-0bda277846f2",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -69,6 +77,28 @@
                     "action": "Fly",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5a5d2a1d-915b-4ac8-989e-5d4f4d2a9787",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57c16d3d-a5fa-4857-bc4a-e2402ab0c782",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -1,10 +1,10 @@
 Using pre-set license
-Built from '2020.3/release' branch; Version is '2020.3.7f1 (dd97f2c94397) revision 14522354'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 19042.964; Version 2009; 64bit' Language: 'ru' Physical Memory: 16320 MB
+Built from '2020.3/staging' branch; Version is '2020.3.8f1 (507919d4fff5) revision 5273881'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19042.985; Version 2009; 64bit' Language: 'ru' Physical Memory: 16320 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Editor\2020.3.7f1\Editor\Unity.exe
+C:\Program Files\Unity\Editor\2020.3.8f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
@@ -15,14 +15,14 @@ D:/Unity Projects/Space_Defender/Space Defender
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54164
+49778
 Successfully changed project path to: D:/Unity Projects/Space_Defender/Space Defender
 D:/Unity Projects/Space_Defender/Space Defender
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 66.52 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 66.75 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Initialize engine version: 2020.3.7f1 (dd97f2c94397)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Editor/2020.3.7f1/Editor/Data/Resources/UnitySubsystems
+Initialize engine version: 2020.3.8f1 (507919d4fff5)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Editor/2020.3.8f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path D:/Unity Projects/Space_Defender/Space Defender/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
@@ -33,64 +33,25 @@ Direct3D:
     Driver:   27.21.14.6627
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Editor/2020.3.7f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Editor/2020.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/Unity/Editor/2020.3.7f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56996
+Mono path[0] = 'C:/Program Files/Unity/Editor/2020.3.8f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Editor/2020.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Editor/2020.3.8f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56520
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Editor/2020.3.7f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
-Register platform support module: C:/Program Files/Unity/Editor/2020.3.7f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Register platform support module: C:/Program Files/Unity/Editor/2020.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Register platform support module: C:/Program Files/Unity/Editor/2020.3.7f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.003647 seconds.
+Register platform support module: C:/Program Files/Unity/Editor/2020.3.8f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Editor/2020.3.8f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Editor/2020.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Editor/2020.3.8f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.003626 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 68.45 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 68.74 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.258 seconds
+- Completed reload, in  1.335 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001736 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 70.04 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.176 seconds
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.59 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3258 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 143.7 MB.
-System memory in use after: 143.8 MB.
-
-Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 3702.
-Total: 3.178100 ms (FindLiveObjects: 0.362100 ms CreateObjectMapping: 0.093500 ms MarkObjects: 2.571300 ms  DeleteObjects: 0.150100 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Prefabs/Enemies
-  artifactKey: Guid(92f64eb64eb63d043a2e9f30bfca335a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Enemies using Guid(92f64eb64eb63d043a2e9f30bfca335a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d9c75f1f5c78ebe2ea02e72a41c18e4') in 0.007064 seconds
-  Import took 0.012188 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000674 seconds.
-  path: Assets/Prefabs/Enemies
-  artifactKey: Guid(92f64eb64eb63d043a2e9f30bfca335a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Enemies using Guid(92f64eb64eb63d043a2e9f30bfca335a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d9c75f1f5c78ebe2ea02e72a41c18e4') in 0.002042 seconds
-  Import took 0.006524 seconds .
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+Registered in 0.001703 seconds.

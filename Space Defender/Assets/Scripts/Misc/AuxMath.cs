@@ -35,7 +35,8 @@ public static class AuxMath
 
     public static float Remap(float value, float oldMin, float oldMax, float newMin, float newMax)
     {
-        float t = Mathf.InverseLerp(oldMin, oldMax, value);
+        float clampedValue = Mathf.Clamp(value, oldMin, oldMax);
+        float t = Mathf.InverseLerp(oldMin, oldMax, clampedValue);
 
         return Mathf.Lerp(newMin, newMax, t);
     }

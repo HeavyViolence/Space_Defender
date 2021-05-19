@@ -1,7 +1,7 @@
 using UnityEditor;
 
-[CustomEditor(typeof(MovementConfig))]
-public class MovementConfigEditor : Editor
+[CustomEditor(typeof(ShipMovementConfig))]
+public class ShipMovementConfigEditor : Editor
 {
     private SerializedProperty _xSpeed;
     private SerializedProperty _xSpeedRandom;
@@ -59,15 +59,15 @@ public class MovementConfigEditor : Editor
         EditorGUILayout.LabelField("Horizontal Parameters:");
 
         EditorGUILayout.Separator();
-        EditorGUILayout.Slider(_xSpeed, 0f, MovementConfig.MaxSpeed, "Speed");
+        EditorGUILayout.Slider(_xSpeed, 0f, ShipMovementConfig.MaxSpeed, "Speed");
         EditorGUILayout.Slider(_xSpeedRandom, 0f, 1f, "Random Factor");
 
         EditorGUILayout.Separator();
-        EditorGUILayout.Slider(_xSpeedDuration, 0f, MovementConfig.MaxSpeedDuration, "Duration");
+        EditorGUILayout.Slider(_xSpeedDuration, 0f, ShipMovementConfig.MaxSpeedDuration, "Duration");
         EditorGUILayout.Slider(_xSpeedDurationRandom, 0f, 1f, "Random Factor");
 
         EditorGUILayout.Separator();
-        EditorGUILayout.Slider(_xSpeedTransitionDuration, 0f, MovementConfig.MaxSpeedTransitionDuration, "Transition Duration");
+        EditorGUILayout.Slider(_xSpeedTransitionDuration, 0f, ShipMovementConfig.MaxSpeedTransitionDuration, "Transition Duration");
         EditorGUILayout.Slider(_xSpeedTransitionDurationRandom, 0f, 1f, "Random Factor");
 
         EditorGUILayout.Separator();
@@ -77,15 +77,15 @@ public class MovementConfigEditor : Editor
         EditorGUILayout.LabelField("Vertical Parameters:");
 
         EditorGUILayout.Separator();
-        EditorGUILayout.Slider(_ySpeed, 0f, MovementConfig.MaxSpeed, "Speed");
+        EditorGUILayout.Slider(_ySpeed, 0f, ShipMovementConfig.MaxSpeed, "Speed");
         EditorGUILayout.Slider(_ySpeedRandom, 0f, 1f, "Random Factor");
 
         EditorGUILayout.Separator();
-        EditorGUILayout.Slider(_ySpeedDuration, 0f, MovementConfig.MaxSpeedDuration, "Duration");
+        EditorGUILayout.Slider(_ySpeedDuration, 0f, ShipMovementConfig.MaxSpeedDuration, "Duration");
         EditorGUILayout.Slider(_ySpeedDurationRandom, 0f, 1f, "Random Factor");
 
         EditorGUILayout.Separator();
-        EditorGUILayout.Slider(_ySpeedTransitionDuration, 0f, MovementConfig.MaxSpeedTransitionDuration, "Transition Duration");
+        EditorGUILayout.Slider(_ySpeedTransitionDuration, 0f, ShipMovementConfig.MaxSpeedTransitionDuration, "Transition Duration");
         EditorGUILayout.Slider(_ySpeedTransitionDurationRandom, 0f, 1f, "Random Factor");
 
         EditorGUILayout.Separator();

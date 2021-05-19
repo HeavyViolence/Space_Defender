@@ -1,11 +1,11 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Movement Config", menuName = "Configs/Movement Config")]
-public class MovementConfig : ScriptableObject
+[CreateAssetMenu(fileName = "New Ship Movement Config", menuName = "Configs/Ship Movement Config")]
+public class ShipMovementConfig : ScriptableObject
 {
-    public const float MaxSpeed = 32f;
-    public const float MaxSpeedDuration = 16f;
-    public const float MaxSpeedTransitionDuration = 8f;
+    public const float MaxSpeed = 30f;
+    public const float MaxSpeedDuration = 15f;
+    public const float MaxSpeedTransitionDuration = 10f;
 
     [SerializeField] private float _xSpeed = 0f;
     [SerializeField] private float _xSpeedRandom = 0f;
@@ -53,6 +53,7 @@ public class MovementConfig : ScriptableObject
         get
         {
             Vector3 boundVector = new Vector3(0f - _horizontalBoundsOffset, 0f, 0f);
+
             return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).x;
         }
     }
@@ -62,6 +63,7 @@ public class MovementConfig : ScriptableObject
         get
         {
             Vector3 boundVector = new Vector3(1f + _horizontalBoundsOffset, 0f, 0f);
+
             return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).x;
         }
     }
@@ -89,6 +91,7 @@ public class MovementConfig : ScriptableObject
         get
         {
             Vector3 boundVector = new Vector3(0f, 1f + _upperBoundOffset, 0f);
+
             return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).y;
         }
     }
@@ -97,6 +100,7 @@ public class MovementConfig : ScriptableObject
         get
         {
             Vector3 boundVector = new Vector3(0f, _lowerBoundOffset, 0f);
+
             return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).y;
         }
     }

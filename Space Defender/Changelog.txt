@@ -29,3 +29,17 @@ Created ship explosion particle system
 Created laser muzzle flash particle system
 Created laser hit particle system
 Created laser trail particle system
+
+v0.0.6:
+Implemented MuzzlePoint and IMuzzlePoint to avoid tags and strings usage when referencing gun objects
+Implemented FireConfig and its editor
+AuxMath.Remap clamped
+Implemented Shooting
+Implemented PlayerShooting
+Implemented IDamageable
+Implemented IDamageDealer
+Implemented ProjectileHitEventArgs
+Implemented ProjectileMovement
+MovementConfig transformed into ShipMovementConfig
+Implemented ProjectileMovementConfig and its editor
+Implemented ShipMovement

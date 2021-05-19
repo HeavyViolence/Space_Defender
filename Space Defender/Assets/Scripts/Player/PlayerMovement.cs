@@ -1,13 +1,11 @@
 using UnityEngine;
 
-public class PlayerMovement : Movement
+public class PlayerMovement : ShipMovement
 {
     private Rigidbody2D _rb = null;
     private PlayerControls _controls;
 
     public Vector2 MoveDir => _controls.Player.Fly.ReadValue<Vector2>();
-
-    public override Vector2 Velocity => new Vector2(_config.Xspeed, _config.Yspeed) * Time.deltaTime;
 
     private void Awake()
     {
@@ -50,6 +48,6 @@ public class PlayerMovement : Movement
 
     protected override void Move()
     {
-        _rb.MovePosition(CurrentPos + Velocity * MoveDir);
+        _rb.MovePosition(Pos + Velocity * MoveDir);
     }
 }
