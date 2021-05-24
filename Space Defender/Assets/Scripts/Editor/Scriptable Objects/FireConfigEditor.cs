@@ -27,7 +27,6 @@ public class FireConfigEditor : Editor
     private SerializedProperty _initialAmmo;
 
     private SerializedProperty _projectile;
-    private SerializedProperty _muzzleFlash;
     private SerializedProperty _hitEffect;
 
     private void OnEnable()
@@ -55,7 +54,6 @@ public class FireConfigEditor : Editor
         _initialAmmo = serializedObject.FindProperty("_initialAmmo");
 
         _projectile = serializedObject.FindProperty("_projectile");
-        _muzzleFlash = serializedObject.FindProperty("_muzzleFlash");
         _hitEffect = serializedObject.FindProperty("_hitEffect");
     }
 
@@ -97,7 +95,6 @@ public class FireConfigEditor : Editor
 
         EditorGUILayout.Separator();
         EditorGUILayout.PropertyField(_projectile, new GUIContent("Projectile Prefab"));
-        EditorGUILayout.PropertyField(_muzzleFlash, new GUIContent("Muzzle Flash Prefab"));
         EditorGUILayout.PropertyField(_hitEffect, new GUIContent("Projectile Hit Prefab"));
 
         serializedObject.ApplyModifiedProperties();

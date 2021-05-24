@@ -31,8 +31,6 @@ public abstract class Shooting : MonoBehaviour
 
     protected GameObject Projectile => _config.Projectile;
 
-    protected GameObject MuzzleFlash => _config.MuzzleFlash;
-
     protected GameObject HitEffect => _config.HitEffect;
 
     protected virtual void Awake()
@@ -131,18 +129,7 @@ public abstract class Shooting : MonoBehaviour
 
             GameObject projectile = Instantiate(_config.Projectile, point.Pos3D, point.Rot4D * dispersion);
 
-            SpawnMuzzleFlashIfExists(point);
-
             if (projectile.gameObject.TryGetComponent(out IDamageDealer d)) d.ProjectileHit += ProjectileHitEventHandler;
-        }
-    }
-
-    private void SpawnMuzzleFlashIfExists(IMuzzlePoint point)
-    {
-        if (MuzzleFlash != null)
-        {
-            GameObject muzzleFlash = Instantiate(MuzzleFlash, point.Pos3D, point.Rot4D);
-            Destroy(muzzleFlash, 1f);
         }
     }
 

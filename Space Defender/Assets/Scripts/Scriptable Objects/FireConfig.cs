@@ -36,7 +36,6 @@ public class FireConfig : ScriptableObject
     [SerializeField] private int _initialAmmo = 0;
 
     [SerializeField] private GameObject _projectile = null;
-    [SerializeField] private GameObject _muzzleFlash = null;
     [SerializeField] private GameObject _hitEffect = null;
 
     public FireType FireType => _fireType;
@@ -76,8 +75,6 @@ public class FireConfig : ScriptableObject
     public int InitialAmmo => _initialAmmo;
 
     public GameObject Projectile => _projectile;
-
-    public GameObject MuzzleFlash => _muzzleFlash;
 
     public GameObject HitEffect => _hitEffect;
 }

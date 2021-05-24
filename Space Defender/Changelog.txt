@@ -43,3 +43,8 @@ Implemented ProjectileMovement
 MovementConfig transformed into ShipMovementConfig
 Implemented ProjectileMovementConfig and its editor
 Implemented ShipMovement
+
+v0.0.7:
+Fixed bug in BackgroundScroller: transition duration was part of a scroll duration
+Removed redundant MuzzleFlash property from FireConfig
+Recreated improved particle effects: laser trail, laser hit, ship explosion
