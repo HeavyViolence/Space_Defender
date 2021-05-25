@@ -49,4 +49,11 @@ public class PlayerShooting : Shooting
             }
         }
     }
+
+    protected override void PerformShot(IMuzzlePoint point)
+    {
+        base.PerformShot(point);
+
+        CameraShaker.Instance.Shake(0.02f, 2f, 4f, 0.01f);
+    }
 }

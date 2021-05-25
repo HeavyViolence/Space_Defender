@@ -48,3 +48,6 @@ v0.0.7:
 Fixed bug in BackgroundScroller: transition duration was part of a scroll duration
 Removed redundant MuzzleFlash property from FireConfig
 Recreated improved particle effects: laser trail, laser hit, ship explosion
+
+v0.0.8:
+CameraShaker implemented

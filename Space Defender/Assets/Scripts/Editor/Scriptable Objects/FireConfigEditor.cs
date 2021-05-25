@@ -72,7 +72,7 @@ public class FireConfigEditor : Editor
 
         EditorGUILayout.Separator();
         EditorGUILayout.Slider(_dispersion, 0f, FireConfig.MaxDispersion, "Dispersion");
-        EditorGUILayout.Slider(_dispersionRandom, 0f, 1f, "Random Fatcor");
+        EditorGUILayout.Slider(_dispersionRandom, 0f, 1f, "Random Factor");
 
         EditorGUILayout.Separator();
         EditorGUILayout.Slider(_fireDuration, 0f, FireConfig.MaxFireDuration, "Fire Duration");

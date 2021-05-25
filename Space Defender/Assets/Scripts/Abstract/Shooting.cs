@@ -119,7 +119,7 @@ public abstract class Shooting : MonoBehaviour
         }
     }
 
-    private void PerformShot(IMuzzlePoint point)
+    protected virtual void PerformShot(IMuzzlePoint point)
     {
         if (_config.Projectile != null && (Ammo > 0 || _config.InfiniteAmmo))
         {

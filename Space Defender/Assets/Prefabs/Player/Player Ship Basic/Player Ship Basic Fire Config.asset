@@ -19,12 +19,11 @@ MonoBehaviour:
   _dispersionRandom: 0.5
   _fireDuration: 3
   _fireDurationRandom: 0.1
-  _cooldown: 2
+  _cooldown: 1.5
   _cooldownRandom: 0.1
   _fireRate: 4
   _fireRateRandom: 0.1
   _infiniteAmmo: 0
   _initialAmmo: 500
   _projectile: {fileID: 8607645010579235968, guid: f49ba630d7f0e094e9d52b82385b1834, type: 3}
-  _muzzleFlash: {fileID: 4695025021280549890, guid: 5e9f0601aa848664cbf4e30c63051887, type: 3}
   _hitEffect: {fileID: 6586495615094078696, guid: a05ae5fa93ec165479701f2655f56a63, type: 3}
