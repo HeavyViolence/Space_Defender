@@ -51,3 +51,14 @@ Recreated improved particle effects: laser trail, laser hit, ship explosion
 
 v0.0.8:
 CameraShaker implemented
+
+v0.0.9:
+Sci-Fi weapons audio effects library imported
+Implemented AudioCollection and its editor
+Implemented AudioPlayer with pooling system
+Implemented AudioData data container
+AuxMath functionality extended
+Viewport bounds calculation reworked to increase performance
+Fixed total player speed was sqrt(2) times faster while moving along x and y axis at the same time
+Added shot audio AudioCollection property to the FireConfig
+AuxMath tests removed

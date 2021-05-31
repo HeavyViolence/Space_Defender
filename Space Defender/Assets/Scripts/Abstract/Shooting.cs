@@ -33,6 +33,8 @@ public abstract class Shooting : MonoBehaviour
 
     protected GameObject HitEffect => _config.HitEffect;
 
+    protected AudioCollection ShotAudio => _config.ShotAudio;
+
     protected virtual void Awake()
     {
         SetupInitialAmmo();
@@ -129,6 +131,8 @@ public abstract class Shooting : MonoBehaviour
 
             GameObject projectile = Instantiate(_config.Projectile, point.Pos3D, point.Rot4D * dispersion);
 
+            PlayShotAudioIfExists(point.Pos3D);
+
             if (projectile.gameObject.TryGetComponent(out IDamageDealer d)) d.ProjectileHit += ProjectileHitEventHandler;
         }
     }
@@ -137,6 +141,11 @@ public abstract class Shooting : MonoBehaviour
     {
         e.Recipient?.ApplyDamage(Damage);
         SpawnHitEffectIfExists(e.HitPos);
+    }
+
+    private void PlayShotAudioIfExists(Vector3 playPos)
+    {
+        if (ShotAudio != null) ShotAudio.PlayRandomClip(playPos);
     }
 
     private void SpawnHitEffectIfExists(Vector3 hitPos)

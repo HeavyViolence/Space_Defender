@@ -48,25 +48,9 @@ public class ShipMovementConfig : ScriptableObject
 
     public float LowestXspeedTransitionDuration => AuxMath.RandomFloor(_xSpeedTransitionDuration, _xSpeedTransitionDurationRandom);
 
-    public float LeftBound
-    {
-        get
-        {
-            Vector3 boundVector = new Vector3(0f - _horizontalBoundsOffset, 0f, 0f);
+    public float LeftBound => CameraHolder.Instance.LeftBound * (_horizontalBoundsOffset + 1f);
 
-            return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).x;
-        }
-    }
-
-    public float RightBound
-    {
-        get
-        {
-            Vector3 boundVector = new Vector3(1f + _horizontalBoundsOffset, 0f, 0f);
-
-            return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).x;
-        }
-    }
+    public float RightBound => CameraHolder.Instance.RightBound * (_horizontalBoundsOffset + 1f);
 
     public float Yspeed => AuxMath.Randomize(_ySpeed, _ySpeedRandom);
 
@@ -86,22 +70,7 @@ public class ShipMovementConfig : ScriptableObject
 
     public float LowestYspeedTransitionDuration => AuxMath.RandomFloor(_ySpeedTransitionDuration, _ySpeedTransitionDurationRandom);
 
-    public float UpperBound
-    {
-        get
-        {
-            Vector3 boundVector = new Vector3(0f, 1f + _upperBoundOffset, 0f);
+    public float UpperBound => CameraHolder.Instance.UpperBound * (_upperBoundOffset + 1f);
 
-            return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).y;
-        }
-    }
-    public float LowerBound
-    {
-        get
-        {
-            Vector3 boundVector = new Vector3(0f, _lowerBoundOffset, 0f);
-
-            return CameraHolder.Instance.MainCam.ViewportToWorldPoint(boundVector).y;
-        }
-    }
+    public float LowerBound => CameraHolder.Instance.LowerBound * (_lowerBoundOffset + 1f);
 }

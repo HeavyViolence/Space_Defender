@@ -38,6 +38,8 @@ public class FireConfig : ScriptableObject
     [SerializeField] private GameObject _projectile = null;
     [SerializeField] private GameObject _hitEffect = null;
 
+    [SerializeField] private AudioCollection _shotAudio = null;
+
     public FireType FireType => _fireType;
 
     public float Damage => AuxMath.Randomize(_damage, _damageRandom);
@@ -77,4 +79,6 @@ public class FireConfig : ScriptableObject
     public GameObject Projectile => _projectile;
 
     public GameObject HitEffect => _hitEffect;
+
+    public AudioCollection ShotAudio => _shotAudio;
 }

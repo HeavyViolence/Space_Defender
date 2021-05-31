@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82ae31026502ea47af2df79b72725d8, type: 3}
   m_Name: Player Projectile Movement Config
   m_EditorClassIdentifier: 
-  _speed: 12
+  _speed: 15
   _speedRandom: 0.05

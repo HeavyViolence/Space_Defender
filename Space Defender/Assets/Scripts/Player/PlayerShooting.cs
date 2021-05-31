@@ -54,6 +54,6 @@ public class PlayerShooting : Shooting
     {
         base.PerformShot(point);
 
-        CameraShaker.Instance.Shake(0.02f, 2f, 4f, 0.01f);
+        CameraShaker.Instance.Shake(0.02f, 2f, 1f, 0.01f);
     }
 }

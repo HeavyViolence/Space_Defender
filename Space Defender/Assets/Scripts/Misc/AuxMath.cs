@@ -13,6 +13,22 @@ public static class AuxMath
         return value * seed;
     }
 
+    public static float RandomizeUp(float value, float factor)
+    {
+        float clampedFactor = Mathf.Clamp01(factor);
+        float seed = Random.Range(1f, 1f + clampedFactor);
+
+        return value * seed;
+    }
+
+    public static float RandomizeDown(float value, float factor)
+    {
+        float clampedFactor = Mathf.Clamp01(factor);
+        float seed = Random.Range(1f - clampedFactor, 1f);
+
+        return value * seed;
+    }
+
     public static float RandomCeil(float value, float factor)
     {
         float clampedFactor = Mathf.Clamp01(factor);

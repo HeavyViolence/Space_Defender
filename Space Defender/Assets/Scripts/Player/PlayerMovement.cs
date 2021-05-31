@@ -5,7 +5,21 @@ public class PlayerMovement : ShipMovement
     private Rigidbody2D _rb = null;
     private PlayerControls _controls;
 
-    public Vector2 MoveDir => _controls.Player.Fly.ReadValue<Vector2>();
+    public Vector2 MoveDir
+    {
+        get
+        {
+            Vector2 value = _controls.Player.Fly.ReadValue<Vector2>();
+
+            if (value.x != 0f && value.y != 0f)
+            {
+                value.x /= Mathf.Sqrt(2f);
+                value.y /= Mathf.Sqrt(2f);
+            }
+
+            return value;
+        }
+    }
 
     private void Awake()
     {

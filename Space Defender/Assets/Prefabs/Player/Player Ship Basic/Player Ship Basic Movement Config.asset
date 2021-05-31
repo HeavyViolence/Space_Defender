@@ -18,12 +18,12 @@ MonoBehaviour:
   _xSpeedDurationRandom: 0
   _xSpeedTransitionDuration: 0
   _xSpeedTransitionDurationRandom: 0
-  _horizontalBoundsOffset: -0.075
+  _horizontalBoundsOffset: -0.15
   _ySpeed: 4
   _ySpeedRandom: 0.05
   _ySpeedDuration: 0
   _ySpeedDurationRandom: 0
   _ySpeedTransitionDuration: 0
   _ySpeedTransitionDurationRandom: 0
-  _upperBoundOffset: -0.61
-  _lowerBoundOffset: 0.035
+  _upperBoundOffset: -1.25
+  _lowerBoundOffset: -0.075

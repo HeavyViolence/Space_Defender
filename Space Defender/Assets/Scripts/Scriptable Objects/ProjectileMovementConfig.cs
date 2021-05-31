@@ -10,11 +10,11 @@ public class ProjectileMovementConfig : ScriptableObject
 
     public float Speed => AuxMath.Randomize(_speed, _speedRandom);
 
-    public float LeftBound => CameraHolder.Instance.MainCam.ViewportToWorldPoint(Vector3.left).x;
+    public float LeftBound => CameraHolder.Instance.LeftBound * 2f;
 
-    public float RightBound => CameraHolder.Instance.MainCam.ViewportToWorldPoint(Vector3.right * 2f).x;
+    public float RightBound => CameraHolder.Instance.RightBound * 2f;
 
-    public float LowerBound => CameraHolder.Instance.MainCam.ViewportToWorldPoint(Vector3.down).y;
+    public float LowerBound => CameraHolder.Instance.LowerBound * 2f;
 
-    public float UpperBound => CameraHolder.Instance.MainCam.ViewportToWorldPoint(Vector3.up * 2f).y;
+    public float UpperBound => CameraHolder.Instance.UpperBound * 2f;
 }

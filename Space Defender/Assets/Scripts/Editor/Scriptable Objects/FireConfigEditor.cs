@@ -29,6 +29,8 @@ public class FireConfigEditor : Editor
     private SerializedProperty _projectile;
     private SerializedProperty _hitEffect;
 
+    private SerializedProperty _shotAudio;
+
     private void OnEnable()
     {
         _target = (FireConfig)serializedObject.targetObject;
@@ -55,6 +57,8 @@ public class FireConfigEditor : Editor
 
         _projectile = serializedObject.FindProperty("_projectile");
         _hitEffect = serializedObject.FindProperty("_hitEffect");
+
+        _shotAudio = serializedObject.FindProperty("_shotAudio");
     }
 
     public override void OnInspectorGUI()
@@ -96,6 +100,9 @@ public class FireConfigEditor : Editor
         EditorGUILayout.Separator();
         EditorGUILayout.PropertyField(_projectile, new GUIContent("Projectile Prefab"));
         EditorGUILayout.PropertyField(_hitEffect, new GUIContent("Projectile Hit Prefab"));
+
+        EditorGUILayout.Separator();
+        EditorGUILayout.PropertyField(_shotAudio, new GUIContent("Shot Audio"));
 
         serializedObject.ApplyModifiedProperties();
     }

@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-public class CameraShaker : PersistentSingleton<CameraShaker>
+public class CameraShaker : GlobalSingleton<CameraShaker>
 {
     public const float MaxAmplitude = 1f;
     public const float MaxAttenuation = 2f;
-    public const float MaxFrequency = 10f;
+    public const float MaxFrequency = 1f;
 
     private Rigidbody2D _rb = null;
 
@@ -55,7 +55,7 @@ public class CameraShaker : PersistentSingleton<CameraShaker>
 
     private void ShakeEngine()
     {
-        if (ShakeEnabled) _rb.MovePosition(_homePos + _deltaPos);
+        if (ShakeEnabled && _deltaPos != Vector2.zero) _rb.MovePosition(_homePos + _deltaPos);
     }
 
     private IEnumerator Shaker(float amplitude, float attenuation, float frequency, float cutoff)
@@ -70,15 +70,15 @@ public class CameraShaker : PersistentSingleton<CameraShaker>
 
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.fixedDeltaTime;
 
-            float delta = amplitude * Mathf.Exp(-attenuation * timer) * Mathf.Sin(frequency * timer);
+            float delta = amplitude * Mathf.Exp(-attenuation * timer) * Mathf.Sin(2f * Mathf.PI * frequency * timer);
             float xDelta = delta * AuxMath.RandomSign;
             float yDelta = delta * AuxMath.RandomSign;
 
             _deltaPos = new Vector2(xDelta, yDelta);
 
-            yield return null;
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
 
         _deltaPos = Vector2.zero;
@@ -94,7 +94,7 @@ public class CameraShaker : PersistentSingleton<CameraShaker>
     {
         if (_coroutine != null)
         {
-            StopCoroutine(_coroutine);
+            StopAllCoroutines();
             _coroutine = null;
             transform.position = _homePos;
         }
