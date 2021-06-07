@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : ShipMovement
+public sealed class PlayerMovement : ShipMovement
 {
     private Rigidbody2D _rb = null;
     private PlayerControls _controls;
@@ -40,6 +40,11 @@ public class PlayerMovement : ShipMovement
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void Update()
+    {
+        WatchfForBounds();
     }
 
     private Rigidbody2D SetupRigidbody2D()

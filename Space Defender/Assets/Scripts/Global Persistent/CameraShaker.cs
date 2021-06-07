@@ -5,34 +5,37 @@ public class CameraShaker : GlobalSingleton<CameraShaker>
 {
     public const float MaxAmplitude = 1f;
     public const float MaxAttenuation = 2f;
-    public const float MaxFrequency = 1f;
+    public const float MaxFrequency = 10f;
 
     private Rigidbody2D _rb = null;
 
     private Vector2 _homePos = Vector2.zero;
-    private Vector2 _deltaPos = Vector2.zero;
-
-    private Coroutine _coroutine = null;
 
     public Camera MainCam { get; private set; } = null;
 
     public bool ShakeEnabled { get; set; } = true;
 
-    private void Start()
+    protected override void Awake()
     {
-        SetupCamProperties();
+        base.Awake();
+
         _rb = SetupRigidbody2D();
+        MainCam = SetupMainCam();
     }
 
-    private void FixedUpdate()
+    private Camera SetupMainCam()
     {
-        ShakeEngine();
-    }
+        Camera cam;
 
-    private void SetupCamProperties()
-    {
-        MainCam = CameraHolder.Instance.MainCam;
-        _homePos = transform.position;
+        if (gameObject.TryGetComponent(out Camera c)) cam = c;
+        else cam = gameObject.AddComponent<Camera>();
+
+        cam.orthographic = true;
+        cam.orthographicSize = 6f;
+
+        _homePos = cam.transform.position;
+
+        return cam;
     }
 
     private Rigidbody2D SetupRigidbody2D()
@@ -53,9 +56,15 @@ public class CameraShaker : GlobalSingleton<CameraShaker>
         return body;
     }
 
-    private void ShakeEngine()
+    public void StopActiveShaking()
     {
-        if (ShakeEnabled && _deltaPos != Vector2.zero) _rb.MovePosition(_homePos + _deltaPos);
+        StopAllCoroutines();
+        _rb.MovePosition(_homePos);
+    }
+
+    public void Shake(float amplitude, float attenuation, float frequency, float cutoff)
+    {
+        if (ShakeEnabled) StartCoroutine(Shaker(amplitude, attenuation, frequency, cutoff));
     }
 
     private IEnumerator Shaker(float amplitude, float attenuation, float frequency, float cutoff)
@@ -73,30 +82,16 @@ public class CameraShaker : GlobalSingleton<CameraShaker>
             timer += Time.fixedDeltaTime;
 
             float delta = amplitude * Mathf.Exp(-attenuation * timer) * Mathf.Sin(2f * Mathf.PI * frequency * timer);
-            float xDelta = delta * AuxMath.RandomSign;
-            float yDelta = delta * AuxMath.RandomSign;
+            float deltaX = delta * AuxMath.RandomSign;
+            float deltaY = delta * AuxMath.RandomSign;
 
-            _deltaPos = new Vector2(xDelta, yDelta);
+            Vector2 deltaPos = new Vector2(deltaX, deltaY);
 
-            yield return new WaitForSeconds(Time.fixedDeltaTime);
+            _rb.MovePosition(_homePos + deltaPos);
+
+            yield return new WaitForFixedUpdate();
         }
 
-        _deltaPos = Vector2.zero;
-        _coroutine = null;
-    }
-
-    public void Shake(float amplitude, float attenuation, float frequency, float cutoff)
-    {
-        if (ShakeEnabled) _coroutine = StartCoroutine(Shaker(amplitude, attenuation, frequency, cutoff));
-    }
-
-    public void StopActiveShaking()
-    {
-        if (_coroutine != null)
-        {
-            StopAllCoroutines();
-            _coroutine = null;
-            transform.position = _homePos;
-        }
+        _rb.MovePosition(_homePos);
     }
 }

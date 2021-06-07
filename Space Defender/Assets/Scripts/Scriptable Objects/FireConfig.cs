@@ -15,6 +15,9 @@ public class FireConfig : ScriptableObject
     public const float MaxFireRate = 10f;
     public const int MaxAmmo = 999;
 
+    public const float MinHitEffectDuration = 1f;
+    public const float MaxHitEffectDuration = 5f;
+
     [SerializeField] private FireType _fireType = FireType.SingleConsecutive;
 
     [SerializeField] private float _damage = 0f;
@@ -36,7 +39,9 @@ public class FireConfig : ScriptableObject
     [SerializeField] private int _initialAmmo = 0;
 
     [SerializeField] private GameObject _projectile = null;
+
     [SerializeField] private GameObject _hitEffect = null;
+    [SerializeField] private float _hitEffectDuration = MinHitEffectDuration;
 
     [SerializeField] private AudioCollection _shotAudio = null;
 
@@ -44,33 +49,33 @@ public class FireConfig : ScriptableObject
 
     public float Damage => AuxMath.Randomize(_damage, _damageRandom);
 
-    public float HighestDamage => AuxMath.RandomCeil(_damage, _damageRandom);
+    public float HighestDamage => AuxMath.HighestRandom(_damage, _damageRandom);
 
-    public float LowestDamage => AuxMath.RandomFloor(_damage, _damageRandom);
+    public float LowestDamage => AuxMath.LowestRandom(_damage, _damageRandom);
 
-    public float Dispersion => AuxMath.Randomize(_dispersion, _dispersionRandom);
+    public float Dispersion => AuxMath.Randomize(_dispersion, _dispersionRandom) * AuxMath.RandomSign;
 
-    public float HighestDispersion => AuxMath.RandomCeil(_dispersion, _dispersionRandom);
+    public float HighestDispersion => AuxMath.HighestRandom(_dispersion, _dispersionRandom);
 
-    public float LowestDispersion => AuxMath.RandomFloor(_dispersion, _dispersionRandom);
+    public float LowestDispersion => AuxMath.LowestRandom(_dispersion, _dispersionRandom);
 
     public float FireDuration => AuxMath.Randomize(_fireDuration, _fireDurationRandom);
 
-    public float LongestFireDuration => AuxMath.RandomCeil(_fireDuration, _fireDurationRandom);
+    public float LongestFireDuration => AuxMath.HighestRandom(_fireDuration, _fireDurationRandom);
 
-    public float ShortestFireDuration => AuxMath.RandomFloor(_fireDuration, _fireDurationRandom);
+    public float ShortestFireDuration => AuxMath.LowestRandom(_fireDuration, _fireDurationRandom);
 
     public float Cooldown => AuxMath.Randomize(_cooldown, _cooldownRandom);
 
-    public float LongestCooldown => AuxMath.RandomCeil(_cooldown, _cooldownRandom);
+    public float LongestCooldown => AuxMath.HighestRandom(_cooldown, _cooldownRandom);
 
-    public float ShortestCooldown => AuxMath.RandomFloor(_cooldown, _cooldownRandom);
+    public float ShortestCooldown => AuxMath.LowestRandom(_cooldown, _cooldownRandom);
 
     public float FireRate => AuxMath.Randomize(_fireRate, _fireRateRandom);
 
-    public float HighestFireRate => AuxMath.RandomCeil(_fireRate, _fireRateRandom);
+    public float HighestFireRate => AuxMath.HighestRandom(_fireRate, _fireRateRandom);
 
-    public float LowestFireRate => AuxMath.RandomFloor(_fireRate, _fireRateRandom);
+    public float LowestFireRate => AuxMath.LowestRandom(_fireRate, _fireRateRandom);
 
     public bool InfiniteAmmo => _infiniteAmmo;
 
@@ -79,6 +84,8 @@ public class FireConfig : ScriptableObject
     public GameObject Projectile => _projectile;
 
     public GameObject HitEffect => _hitEffect;
+
+    public float HitEffectDuration => _hitEffectDuration;
 
     public AudioCollection ShotAudio => _shotAudio;
 }

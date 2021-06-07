@@ -21,11 +21,14 @@ public class ProjectileMovement : Movement
         Move();
     }
 
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
-
         WatchToRemove();
+    }
+
+    protected void FixedUpdate()
+    {
+        WatchfForBounds();
     }
 
     private Rigidbody2D SetupRigidbody2D()
@@ -44,7 +47,7 @@ public class ProjectileMovement : Movement
         body.gravityScale = 0f;
         body.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         body.sleepMode = RigidbodySleepMode2D.StartAwake;
-        body.interpolation = RigidbodyInterpolation2D.Interpolate;
+        body.interpolation = RigidbodyInterpolation2D.Extrapolate;
 
         return body;
     }
@@ -56,7 +59,7 @@ public class ProjectileMovement : Movement
             float clampedX = Mathf.Clamp(Pos.x, _config.LeftBound, _config.RightBound);
             float clampedY = Mathf.Clamp(Pos.y, _config.LowerBound, _config.UpperBound);
 
-            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+            _rb.position = new Vector3(clampedX, clampedY, transform.position.z);
         }
     }
 

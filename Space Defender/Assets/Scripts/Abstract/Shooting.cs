@@ -15,7 +15,7 @@ public abstract class Shooting : MonoBehaviour
 
     protected virtual float Damage => _config.Damage;
 
-    protected virtual float Dispersion => _config.Dispersion * AuxMath.RandomSign;
+    protected virtual float Dispersion => _config.Dispersion;
 
     protected virtual float FireDuration => _config.FireDuration;
 
@@ -123,13 +123,13 @@ public abstract class Shooting : MonoBehaviour
 
     protected virtual void PerformShot(IMuzzlePoint point)
     {
-        if (_config.Projectile != null && (Ammo > 0 || _config.InfiniteAmmo))
+        if (Projectile != null && (Ammo > 0 || _config.InfiniteAmmo))
         {
             Ammo--;
 
             Quaternion dispersion = Quaternion.Euler(point.RotX, point.RotY, Dispersion);
 
-            GameObject projectile = Instantiate(_config.Projectile, point.Pos3D, point.Rot4D * dispersion);
+            GameObject projectile = Instantiate(Projectile, point.Pos3D, point.Rot4D * dispersion);
 
             PlayShotAudioIfExists(point.Pos3D);
 
@@ -153,12 +153,7 @@ public abstract class Shooting : MonoBehaviour
         if (HitEffect != null)
         {
             GameObject hitEffect = Instantiate(HitEffect, hitPos, Quaternion.identity);
-
-            float lifeTime = 0f;
-
-            if (HitEffect.TryGetComponent(out ParticleSystem p)) lifeTime = p.main.duration;
-
-            Destroy(hitEffect, lifeTime);
+            Destroy(hitEffect, _config.HitEffectDuration);
         }
     }
 

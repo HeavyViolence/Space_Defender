@@ -62,3 +62,12 @@ Viewport bounds calculation reworked to increase performance
 Fixed total player speed was sqrt(2) times faster while moving along x and y axis at the same time
 Added shot audio AudioCollection property to the FireConfig
 AuxMath tests removed
+
+v0.0.10:
+Implemented DurabilityConfig and its editor
+Implemented abstract Durability
+Implemented EnemyDurability
+CameraShaker delayed behaviour bug fixed
+Implemented healthbar shader
+Implemented Healthbar script
+Assembled ships explosion audio collection

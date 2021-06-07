@@ -29,14 +29,14 @@ public static class AuxMath
         return value * seed;
     }
 
-    public static float RandomCeil(float value, float factor)
+    public static float HighestRandom(float value, float factor)
     {
         float clampedFactor = Mathf.Clamp01(factor);
 
         return value * (1f + clampedFactor);
     }
 
-    public static float RandomFloor(float value, float factor)
+    public static float LowestRandom(float value, float factor)
     {
         float clampedFactor = Mathf.Clamp01(factor);
 

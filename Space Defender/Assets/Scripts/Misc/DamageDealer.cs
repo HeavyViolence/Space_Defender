@@ -13,6 +13,7 @@ public class DamageDealer : MonoBehaviour, IDamageDealer
     private void OnTriggerEnter2D(Collider2D c)
     {
         HandleProjectileHit(c);
+        Destroy(gameObject);
     }
 
     protected virtual void HandleProjectileHit(Collider2D c)

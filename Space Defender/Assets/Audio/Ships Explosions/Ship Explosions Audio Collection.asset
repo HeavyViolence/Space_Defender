@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbba6d8473a5d2408e5b0fec44ba52e, type: 3}
+  m_Name: Ship Explosions Audio Collection
+  m_EditorClassIdentifier: 
+  _clips:
+  - {fileID: 8300000, guid: fbb9de5f42d5c4610a679aaf0582cd53, type: 3}
+  - {fileID: 8300000, guid: acd42d266769a4e84a577da53e8bcdea, type: 3}
+  - {fileID: 8300000, guid: a2399c3edc6dc423ca9187f98bcb37df, type: 3}
+  - {fileID: 8300000, guid: 5bd49f43a8795476094bb8cb8276f62d, type: 3}
+  - {fileID: 8300000, guid: 0d14e23dbf30c4d048bcda9e61b6a83f, type: 3}
+  - {fileID: 8300000, guid: 9f4a82f6d4f934d8cac734c60dd8631a, type: 3}
+  - {fileID: 8300000, guid: 1d6fd4d156e784d6d9fedd78e31872b9, type: 3}
+  - {fileID: 8300000, guid: 6187418b80350488c99328c51e30f692, type: 3}
+  - {fileID: 8300000, guid: a8b5b3919455d4b4d88b756178ec0dd2, type: 3}
+  - {fileID: 8300000, guid: 5dd9808f2eb8c4524ac0e6cf8df89df6, type: 3}
+  - {fileID: 8300000, guid: 81d4c62ce3c314525acd86ba20665407, type: 3}
+  - {fileID: 8300000, guid: c7799b7ef829d4dc89ef3dcd91d42f42, type: 3}
+  - {fileID: 8300000, guid: ff2a81140711a491b8ef7f50da862e69, type: 3}
+  - {fileID: 8300000, guid: dccb3470da49b4e518095b5a42eadd7a, type: 3}
+  - {fileID: 8300000, guid: a6a735496f2a14aecb6aafb2516b1e35, type: 3}
+  - {fileID: 8300000, guid: f0e7b71d13c9c453ea0ac3c5ad6ff709, type: 3}
+  - {fileID: 8300000, guid: 48f2b61ddb4fa45a19cdb72a9ffd6d1a, type: 3}
+  _group: {fileID: 7753725282936189113, guid: 8101ac679ff0be74ab1c9748ce30e6f6, type: 2}
+  _volume: 1
+  _volumeRandom: 0.1
+  _priority: 0
+  _spatialBlend: 0.5

@@ -27,7 +27,9 @@ public class FireConfigEditor : Editor
     private SerializedProperty _initialAmmo;
 
     private SerializedProperty _projectile;
+
     private SerializedProperty _hitEffect;
+    private SerializedProperty _hitEffectDuration;
 
     private SerializedProperty _shotAudio;
 
@@ -56,7 +58,9 @@ public class FireConfigEditor : Editor
         _initialAmmo = serializedObject.FindProperty("_initialAmmo");
 
         _projectile = serializedObject.FindProperty("_projectile");
+
         _hitEffect = serializedObject.FindProperty("_hitEffect");
+        _hitEffectDuration = serializedObject.FindProperty("_hitEffectDuration");
 
         _shotAudio = serializedObject.FindProperty("_shotAudio");
     }
@@ -99,7 +103,17 @@ public class FireConfigEditor : Editor
 
         EditorGUILayout.Separator();
         EditorGUILayout.PropertyField(_projectile, new GUIContent("Projectile Prefab"));
+
+        EditorGUILayout.Separator();
         EditorGUILayout.PropertyField(_hitEffect, new GUIContent("Projectile Hit Prefab"));
+
+        if (_target.HitEffect != null)
+        {
+            EditorGUILayout.Slider(_hitEffectDuration,
+                                   FireConfig.MinHitEffectDuration,
+                                   FireConfig.MaxHitEffectDuration,
+                                   "Hit Effect Duration");
+        }
 
         EditorGUILayout.Separator();
         EditorGUILayout.PropertyField(_shotAudio, new GUIContent("Shot Audio"));

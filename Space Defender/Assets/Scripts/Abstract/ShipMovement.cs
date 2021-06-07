@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class ShipMovement : Movement
 {
-    [SerializeField] private ShipMovementConfig _config = null;
+    [SerializeField] protected ShipMovementConfig _config = null;
 
     protected override Vector2 Velocity => new Vector2(_config.Xspeed, _config.Yspeed) * Time.deltaTime;
 

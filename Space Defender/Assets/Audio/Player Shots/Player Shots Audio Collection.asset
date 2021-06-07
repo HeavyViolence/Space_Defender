@@ -21,6 +21,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8aa45c4e8cee94476a7067f27336f2dd, type: 3}
   _group: {fileID: -6031824664880429055, guid: 8101ac679ff0be74ab1c9748ce30e6f6, type: 2}
   _volume: 1
-  _volumeRandom: 0.05
-  _priority: 128
+  _volumeRandom: 0.1
+  _priority: 0
   _spatialBlend: 0.5

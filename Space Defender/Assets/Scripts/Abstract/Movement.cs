@@ -8,11 +8,6 @@ public abstract class Movement : MonoBehaviour
 
     protected abstract bool WithinBounds { get; }
 
-    protected virtual void Update()
-    {
-        WatchfForBounds();
-    }
-
     protected abstract void WatchfForBounds();
 
     protected void WatchToRemove()

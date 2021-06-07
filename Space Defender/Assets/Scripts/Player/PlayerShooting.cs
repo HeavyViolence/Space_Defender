@@ -32,7 +32,7 @@ public class PlayerShooting : Shooting
 
     protected override void Fire()
     {
-        if (FirePressed && _firingCoroutine == null && _timer > _config.Cooldown)
+        if (FirePressed && _firingCoroutine == null && _timer > Cooldown)
         {
             _firingCoroutine = StartCoroutine(Firing());
             _timer = 0f;
@@ -54,6 +54,6 @@ public class PlayerShooting : Shooting
     {
         base.PerformShot(point);
 
-        CameraShaker.Instance.Shake(0.02f, 2f, 1f, 0.01f);
+        CameraShaker.Instance.Shake(0.0075f, 2f, 2f, 0.01f);
     }
 }

@@ -32,21 +32,21 @@ public class ShipMovementConfig : ScriptableObject
 
     public float Xspeed => AuxMath.Randomize(_xSpeed, _xSpeedRandom);
 
-    public float HighestXspeed => AuxMath.RandomCeil(_xSpeed, _xSpeedRandom);
+    public float HighestXspeed => AuxMath.HighestRandom(_xSpeed, _xSpeedRandom);
 
-    public float LowestXspeed => AuxMath.RandomFloor(_xSpeed, _xSpeedRandom);
+    public float LowestXspeed => AuxMath.LowestRandom(_xSpeed, _xSpeedRandom);
 
     public float XspeedDuration => AuxMath.Randomize(_xSpeedDuration, _xSpeedDurationRandom);
 
-    public float HighestXspeedDuration => AuxMath.RandomCeil(_xSpeedDuration, _xSpeedDurationRandom);
+    public float HighestXspeedDuration => AuxMath.HighestRandom(_xSpeedDuration, _xSpeedDurationRandom);
 
-    public float LowestXspeedDuration => AuxMath.RandomFloor(_xSpeedDuration, _xSpeedDurationRandom);
+    public float LowestXspeedDuration => AuxMath.LowestRandom(_xSpeedDuration, _xSpeedDurationRandom);
 
     public float XspeedTransitionDuration => AuxMath.Randomize(_xSpeedTransitionDuration, _xSpeedTransitionDurationRandom);
 
-    public float HighestXspeedTransitionDuration => AuxMath.RandomCeil(_xSpeedTransitionDuration, _xSpeedTransitionDurationRandom);
+    public float HighestXspeedTransitionDuration => AuxMath.HighestRandom(_xSpeedTransitionDuration, _xSpeedTransitionDurationRandom);
 
-    public float LowestXspeedTransitionDuration => AuxMath.RandomFloor(_xSpeedTransitionDuration, _xSpeedTransitionDurationRandom);
+    public float LowestXspeedTransitionDuration => AuxMath.LowestRandom(_xSpeedTransitionDuration, _xSpeedTransitionDurationRandom);
 
     public float LeftBound => CameraHolder.Instance.LeftBound * (_horizontalBoundsOffset + 1f);
 
@@ -54,21 +54,21 @@ public class ShipMovementConfig : ScriptableObject
 
     public float Yspeed => AuxMath.Randomize(_ySpeed, _ySpeedRandom);
 
-    public float HighestYspeed => AuxMath.RandomCeil(_ySpeed, _ySpeedRandom);
+    public float HighestYspeed => AuxMath.HighestRandom(_ySpeed, _ySpeedRandom);
 
-    public float LowestYspeed => AuxMath.RandomFloor(_ySpeed, _ySpeedRandom);
+    public float LowestYspeed => AuxMath.LowestRandom(_ySpeed, _ySpeedRandom);
 
     public float YspeedDuration => AuxMath.Randomize(_ySpeedDuration, _ySpeedDurationRandom);
 
-    public float HighestYspeedDuration => AuxMath.RandomCeil(_ySpeedDuration, _ySpeedDurationRandom);
+    public float HighestYspeedDuration => AuxMath.HighestRandom(_ySpeedDuration, _ySpeedDurationRandom);
 
-    public float LowestYspeedDuration => AuxMath.RandomFloor(_ySpeedDuration, _ySpeedDurationRandom);
+    public float LowestYspeedDuration => AuxMath.LowestRandom(_ySpeedDuration, _ySpeedDurationRandom);
 
     public float YspeedTransitionDuration => AuxMath.Randomize(_ySpeedTransitionDuration, _ySpeedTransitionDurationRandom);
 
-    public float HighestYspeedTransitionDuration => AuxMath.RandomCeil(_ySpeedTransitionDuration, _ySpeedTransitionDurationRandom);
+    public float HighestYspeedTransitionDuration => AuxMath.HighestRandom(_ySpeedTransitionDuration, _ySpeedTransitionDurationRandom);
 
-    public float LowestYspeedTransitionDuration => AuxMath.RandomFloor(_ySpeedTransitionDuration, _ySpeedTransitionDurationRandom);
+    public float LowestYspeedTransitionDuration => AuxMath.LowestRandom(_ySpeedTransitionDuration, _ySpeedTransitionDurationRandom);
 
     public float UpperBound => CameraHolder.Instance.UpperBound * (_upperBoundOffset + 1f);
 
