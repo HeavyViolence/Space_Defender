@@ -17,11 +17,8 @@ public class Healthbar : MonoBehaviour
 
     private Renderer FindRendererIfExists()
     {
-        Renderer renderer = null;
-
-        if (gameObject.TryGetComponent(out Renderer r)) renderer = r;
-
-        return renderer;
+        if (gameObject.TryGetComponent(out Renderer r)) return r;
+        else return null;
     }
 
     public void SetValue(float currentValue, float maxValue)
@@ -71,13 +68,7 @@ public class Healthbar : MonoBehaviour
         }
     }
 
-    public void Hide()
-    {
-        if (_renderer != null) _renderer.enabled = false;
-    }
+    public void Hide() => gameObject.SetActive(false);
 
-    public void Show()
-    {
-        if (_renderer != null) _renderer.enabled = true;
-    }
+    public void Show() => gameObject.SetActive(true);
 }

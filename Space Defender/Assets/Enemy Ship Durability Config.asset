@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e57e85476487d0e469526a4d6bc2ad82, type: 3}
-  m_Name: New Durability Config
+  m_Name: Enemy Ship Durability Config
   m_EditorClassIdentifier: 
-  _maxDurability: 300
+  _maxDurability: 500
   _maxDurabilityRandom: 0.1
-  _reconstructionEnabled: 0
+  _reconstructionEnabled: 1
   _reconstructionRate: 50
   _reconstructionRateRandom: 0
   _reconstructionBounded: 1
-  _reconstructionLowerBound: 0
-  _reconstructionUpperBound: 0.75
+  _reconstructionLowerBound: 0.25
+  _reconstructionUpperBound: 1
   _explosionEffect: {fileID: 3365807216939438598, guid: e18828b72fadee04cbed0f135cdfe657, type: 3}
   _explosionDuration: 5
   _explosionAudio: {fileID: 11400000, guid: 4020d99e753d4c94ca3f6274538dce18, type: 2}

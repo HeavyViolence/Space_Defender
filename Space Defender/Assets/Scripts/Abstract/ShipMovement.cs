@@ -4,7 +4,7 @@ public abstract class ShipMovement : Movement
 {
     [SerializeField] protected ShipMovementConfig _config = null;
 
-    protected override Vector2 Velocity => new Vector2(_config.Xspeed, _config.Yspeed) * Time.deltaTime;
+    protected override Vector2 Velocity => new Vector2(_config.XSpeed, _config.YSpeed) * Time.deltaTime;
 
     protected override bool WithinBounds => AuxMath.ValueWithinRange(Pos.x, _config.LeftBound, _config.RightBound) &&
                                             AuxMath.ValueWithinRange(Pos.y, _config.LowerBound, _config.UpperBound);

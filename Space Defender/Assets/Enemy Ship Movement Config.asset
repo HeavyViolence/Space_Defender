@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c7c2ebc30521946b5bba1d7996b041, type: 3}
+  m_Name: Enemy Ship Movement Config
+  m_EditorClassIdentifier: 
+  _xSpeed: 1
+  _xSpeedRandom: 0.25
+  _xSpeedDuration: 2
+  _xSpeedDurationRandom: 0.25
+  _xSpeedTransitionDuration: 2
+  _xSpeedTransitionDurationRandom: 0.25
+  _horizontalBoundsOffset: -0.25
+  _ySpeed: 0.25
+  _ySpeedRandom: 0.25
+  _ySpeedDuration: 4
+  _ySpeedDurationRandom: 0.25
+  _ySpeedTransitionDuration: 2
+  _ySpeedTransitionDurationRandom: 0.25
+  _upperBoundOffset: 0
+  _lowerBoundOffset: 0

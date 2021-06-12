@@ -56,7 +56,7 @@ public sealed class PlayerMovement : ShipMovement
 
         body.bodyType = RigidbodyType2D.Kinematic;
         body.simulated = true;
-        body.useFullKinematicContacts = false;
+        body.useFullKinematicContacts = true;
         body.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         body.sleepMode = RigidbodySleepMode2D.StartAwake;
         body.interpolation = RigidbodyInterpolation2D.Interpolate;

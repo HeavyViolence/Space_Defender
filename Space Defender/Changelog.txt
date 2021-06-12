@@ -71,3 +71,17 @@ CameraShaker delayed behaviour bug fixed
 Implemented healthbar shader
 Implemented Healthbar script
 Assembled ships explosion audio collection
+
+v0.0.11:
+Engine version updated from 2020.3.9f1 to 2020.3.11f1
+Fixed bug: health bar doesn't hide itself on full health
+Implemented IState
+Implemented State
+Implemented Transition
+Implemented BaseFSM
+Implemented BaseEnemyMovementFSM
+Implemented EnemyMovementFSM_Flank : BaseEnemyMovementFSM
+Implemented EnemyMovementState
+Implemented Flank : EnemyMovementState
+Implemented EscapeLeftBoundDown : EnemyMovementState
+Implemented EscapeRightBoundDown : EnemyMovementState

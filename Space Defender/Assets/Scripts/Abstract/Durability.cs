@@ -16,13 +16,7 @@ public abstract class Durability : MonoBehaviour, IDamageable
         {
             _value = Mathf.Clamp(value, 0f, _config.MaxDurability);
 
-            if (_healthbar != null)
-            {
-                _healthbar.SetValue(_value, _config.MaxDurability);
-
-                if (_value == _config.MaxDurability) _healthbar.Hide();
-                else _healthbar.Show();
-            }
+            UpdateHealthbar();
 
             if (_value == 0f) PerformDestruction();
         }
@@ -38,6 +32,16 @@ public abstract class Durability : MonoBehaviour, IDamageable
         Reconstruct();
     }
 
+    private void UpdateHealthbar()
+    {
+        if (_healthbar != null)
+        {
+            if (_value == _config.MaxDurability) _healthbar.Hide();
+            else _healthbar.Show();
+
+            _healthbar.SetValue(_value, _config.MaxDurability);
+        }
+    }
 
     public void ApplyDamage(float damage)
     {

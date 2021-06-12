@@ -1,3 +1,7 @@
+Implement Bootstrapper scene
+
 Implement MusicPlayer
 
-Implement enemy movement finate state machine
+Implement enemy shooting
+
+Enemy movement bug to be fixed: when entering flank state from escape bound state enemy ship may start wavy side sliding near the border

@@ -4,7 +4,7 @@ using UnityEngine;
 public class DurabilityConfig : ScriptableObject
 {
     public const float DurabilityFloor = 100f;
-    public const float DurabilityCeiling = 10000f;
+    public const float DurabilityCeiling = 100000f;
 
     public const float MaxReconstruction = 100f;
 
