@@ -4,16 +4,14 @@ public abstract class BaseEnemyMovementFSM : BaseFSM
 {
     [SerializeField] protected ShipMovementConfig _config = null;
 
-    protected Rigidbody2D _rBody = null;
-
     public float LastXSpeed { get; set; } = 0f;
     public float LastYSpeed { get; set; } = 0f;
-    public Rigidbody2D Body => _rBody;
+    public Rigidbody2D Body { get; private set; } = null;
     public ShipMovementConfig Config => _config;
 
     protected override void OnSetup()
     {
-        _rBody = SetupRigidbody2D();
+        Body = SetupRigidbody2D();
     }
 
     private Rigidbody2D SetupRigidbody2D()

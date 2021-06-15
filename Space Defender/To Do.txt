@@ -4,4 +4,6 @@ Implement MusicPlayer
 
 Implement enemy shooting
 
-Enemy movement bug to be fixed: when entering flank state from escape bound state enemy ship may start wavy side sliding near the border
+Implement enemy spawner
+
+Implement FlyIntoBattle (spawn-related, upon enemy spawn) and Escape (upon lower bound reach) enemy movement states

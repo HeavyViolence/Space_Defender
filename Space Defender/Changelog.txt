@@ -85,3 +85,21 @@ Implemented EnemyMovementState
 Implemented Flank : EnemyMovementState
 Implemented EscapeLeftBoundDown : EnemyMovementState
 Implemented EscapeRightBoundDown : EnemyMovementState
+
+v0.0.12:
+BaseFSM functionality expanded
+EnemyMovementState functionality expanded
+Flank bug fixed: when entering flank state from any escape bound state enemy ship may start wavy side sliding near the border
+Implemented EscapeLeftBoundUpOrDown
+Implemented EscapeRightBoundUpOrDown
+Implemented EscapeLowerBound
+Implemented EscapeUpperBound
+Implemented Dodge
+Implemented EnemyMovementFSM_Dodge
+Implemented AvoidPlayer
+Implemented EnemyMovementFSM_AvoidPlayer
+Implemented SeekPlayer
+Implemented EnemyMovementFSM_SeekPlayer
+Implemented Zigzag
+Implemented EnemyMovementFSM_Zigzag
+Implemented RandomBoolean property in AuxMath

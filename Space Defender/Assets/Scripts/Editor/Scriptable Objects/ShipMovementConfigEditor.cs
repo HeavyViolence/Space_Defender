@@ -89,8 +89,8 @@ public class ShipMovementConfigEditor : Editor
         EditorGUILayout.Slider(_ySpeedTransitionDurationRandom, 0f, 1f, "Random Factor");
 
         EditorGUILayout.Separator();
-        EditorGUILayout.Slider(_upperBoundOffset, -1.5f, 0f, "Upper Bound Offset");
-        EditorGUILayout.Slider(_lowerBoundOffset, -0.5f, 1f, "Lower Bound Offset");
+        EditorGUILayout.Slider(_upperBoundOffset, -2f, 0f, "Upper Bound Offset");
+        EditorGUILayout.Slider(_lowerBoundOffset, -2f, 1f, "Lower Bound Offset");
 
         serializedObject.ApplyModifiedProperties();
     }

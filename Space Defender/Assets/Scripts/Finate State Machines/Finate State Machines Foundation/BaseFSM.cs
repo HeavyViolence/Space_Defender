@@ -12,6 +12,8 @@ public abstract class BaseFSM : MonoBehaviour
 
     private readonly Dictionary<string, List<Transition>> _transitions = new Dictionary<string, List<Transition>>();
 
+    public IState PreviousState { get; private set; } = null;
+
     private void Awake()
     {
         OnSetup();
@@ -80,6 +82,7 @@ public abstract class BaseFSM : MonoBehaviour
         if (_currentState == state) return;
 
         _currentState?.OnStateExit();
+        PreviousState = _currentState;
         _currentState = state;
 
         if (_transitions.TryGetValue(_currentState.GetType().ToString(), out var t))

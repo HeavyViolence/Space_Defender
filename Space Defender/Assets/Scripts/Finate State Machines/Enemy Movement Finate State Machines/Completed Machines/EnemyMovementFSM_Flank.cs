@@ -5,6 +5,7 @@ public class EnemyMovementFSM_Flank : BaseEnemyMovementFSM
         base.OnSetup();
 
         Flank flank = new Flank(this);
+
         EscapeLeftBoundDown escapeLeftBoundDown = new EscapeLeftBoundDown(this);
         EscapeRightBoundDown escapeRightBoundDown = new EscapeRightBoundDown(this);
 

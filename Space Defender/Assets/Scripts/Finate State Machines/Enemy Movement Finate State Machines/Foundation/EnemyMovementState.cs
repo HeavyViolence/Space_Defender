@@ -18,11 +18,14 @@ public abstract class EnemyMovementState : State
 
     public Vector2 Velocity => new Vector2(CurrentXSpeed, CurrentYSpeed) * Time.deltaTime;
     public BaseEnemyMovementFSM Owner { get; } = null;
+    public bool StateHasJustBegun { get; private set; } = false;
 
     public EnemyMovementState(BaseEnemyMovementFSM owner) { Owner = owner; }
 
     public override void OnStateEnter()
     {
+        StateHasJustBegun = true;
+
         TargetXSpeed = GetTargetXSpeed();
         PreviousTargetXSpeed = Owner.LastXSpeed;
         XSpeedDuration = Owner.Config.XSpeedDuration;
@@ -34,6 +37,8 @@ public abstract class EnemyMovementState : State
         YSpeedDuration = Owner.Config.YSpeedDuration;
         YSpeedTimer = 0f;
         YSpeedTransitionDuration = Owner.Config.YSpeedTransitionDuration;
+
+        StateHasJustBegun = false;
     }
 
     public override void OnStateExit()

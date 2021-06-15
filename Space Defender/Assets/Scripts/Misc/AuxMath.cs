@@ -58,4 +58,6 @@ public static class AuxMath
     }
 
     public static float RandomSign => Random.Range(0, int.MaxValue) % 2 == 0 ? 1f : -1f;
+
+    public static bool RandomBoolean => Random.Range(0, int.MaxValue) % 2 == 0;
 }
