@@ -47,6 +47,6 @@ public class AudioCollection : ScriptableObject
     {
         if (_selectedClipIndex == -1) _selectedClipIndex = Random.Range(0, _clips.Count);
 
-        return _clips[(int)Mathf.Repeat(_selectedClipIndex++, _clips.Count)];
+        return _clips[(int)Mathf.Repeat(_selectedClipIndex++, _clips.Count - 1f)];
     }
 }

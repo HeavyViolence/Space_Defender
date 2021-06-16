@@ -123,6 +123,9 @@ public abstract class Shooting : MonoBehaviour
 
     protected virtual void PerformShot(IMuzzlePoint point)
     {
+        if (Projectile == null)
+            throw new System.Exception("Projectile prefab is not set up!");
+
         if (Projectile != null && (Ammo > 0 || _config.InfiniteAmmo))
         {
             Ammo--;
@@ -133,7 +136,7 @@ public abstract class Shooting : MonoBehaviour
 
             PlayShotAudioIfExists(point.Pos3D);
 
-            if (projectile.gameObject.TryGetComponent(out IDamageDealer d)) d.ProjectileHit += ProjectileHitEventHandler;
+            if (projectile.TryGetComponent(out IDamageDealer d)) d.ProjectileHit += ProjectileHitEventHandler;
         }
     }
 

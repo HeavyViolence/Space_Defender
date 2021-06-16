@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c7c2ebc30521946b5bba1d7996b041, type: 3}
   m_Name: Enemy Ship Movement Config
   m_EditorClassIdentifier: 
-  _xSpeed: 0.6
-  _xSpeedRandom: 0.25
-  _xSpeedDuration: 1.5
+  _xSpeed: 1
+  _xSpeedRandom: 0.5
+  _xSpeedDuration: 2
   _xSpeedDurationRandom: 0.5
-  _xSpeedTransitionDuration: 1
+  _xSpeedTransitionDuration: 0.75
   _xSpeedTransitionDurationRandom: 0.25
   _horizontalBoundsOffset: -0.25
-  _ySpeed: 0.25
+  _ySpeed: 0.5
   _ySpeedRandom: 0.25
   _ySpeedDuration: 2
   _ySpeedDurationRandom: 0.25
   _ySpeedTransitionDuration: 1
   _ySpeedTransitionDurationRandom: 0.25
   _upperBoundOffset: -0.1
-  _lowerBoundOffset: -1
+  _lowerBoundOffset: 0.1

@@ -4,6 +4,4 @@ Implement MusicPlayer
 
 Implement enemy shooting
 
-Implement enemy spawner
-
-Implement FlyIntoBattle (spawn-related, upon enemy spawn) and Escape (upon lower bound reach) enemy movement states
+Note: enemy difficulty by movement type => flank, zigzag, avoid player, seek player, dodge

@@ -94,12 +94,19 @@ Implemented EscapeLeftBoundUpOrDown
 Implemented EscapeRightBoundUpOrDown
 Implemented EscapeLowerBound
 Implemented EscapeUpperBound
-Implemented Dodge
-Implemented EnemyMovementFSM_Dodge
-Implemented AvoidPlayer
-Implemented EnemyMovementFSM_AvoidPlayer
-Implemented SeekPlayer
-Implemented EnemyMovementFSM_SeekPlayer
-Implemented Zigzag
-Implemented EnemyMovementFSM_Zigzag
+Implemented Dodge : EnemyMovementState
+Implemented EnemyMovementFSM_Dodge : BaseEnemyMovementFSM
+Implemented AvoidPlayer : EnemyMovementState
+Implemented EnemyMovementFSM_AvoidPlayer : BaseEnemyMovementFSM
+Implemented SeekPlayer : EnemyMovementState
+Implemented EnemyMovementFSM_SeekPlayer : BaseEnemyMovementFSM
+Implemented Zigzag : EnemyMovementState
+Implemented EnemyMovementFSM_Zigzag : BaseEnemyMovementFSM
 Implemented RandomBoolean property in AuxMath
+
+v0.0.13:
+Implemented EnemySpawner
+Implemented EnemyWaveConfig and its editor
+Implemented EnemySpawner prefab
+Implemented FlyIntoBattle : EnemyMovementState
+Implemented Escape : EnemyMovementState

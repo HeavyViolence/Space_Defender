@@ -4,6 +4,8 @@ public class EnemyMovementFSM_Dodge : BaseEnemyMovementFSM
     {
         base.OnSetup();
 
+        FlyIntoBattle flyIntoBattle = new FlyIntoBattle(this);
+
         Dodge dodge = new Dodge(this);
 
         EscapeLeftBoundUpOrDown escapeLeftBoundUpOrDown = new EscapeLeftBoundUpOrDown(this);
@@ -11,6 +13,8 @@ public class EnemyMovementFSM_Dodge : BaseEnemyMovementFSM
 
         EscapeLowerBound escapeLowerBound = new EscapeLowerBound(this);
         EscapeUpperBound escapeUpperBound = new EscapeUpperBound(this);
+
+        AddTransition(flyIntoBattle, dodge, () => Body.position.y < Config.UpperBound);
 
         AddTransition(dodge, escapeLeftBoundUpOrDown, () => Body.position.x < Config.LeftBound);
         AddTransition(dodge, escapeRightBoundUpOrDown, () => Body.position.x > Config.RightBound);
@@ -37,7 +41,7 @@ public class EnemyMovementFSM_Dodge : BaseEnemyMovementFSM
         AddTransition(escapeUpperBound, escapeLeftBoundUpOrDown, () => Body.position.x < Config.LeftBound);
         AddTransition(escapeUpperBound, escapeRightBoundUpOrDown, () => Body.position.x > Config.RightBound);
 
-        SetInitialState(dodge);
+        SetInitialState(flyIntoBattle);
         SetDefaultState(dodge);
     }
 }
