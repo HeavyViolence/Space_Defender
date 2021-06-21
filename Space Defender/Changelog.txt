@@ -110,3 +110,14 @@ Implemented EnemyWaveConfig and its editor
 Implemented EnemySpawner prefab
 Implemented FlyIntoBattle : EnemyMovementState
 Implemented Escape : EnemyMovementState
+
+v0.0.14:
+Engine version updated from 2020.3.11f1 to 2020.3.12f1
+Implemented AuxMath.GetRandomInRangeWithExceptions()
+Implemented AudioCollection.PlayRandomClipUnrepeated()
+Bug fixed: longer enemy spawn delay upon first enemy spawn for each EnemyWaveConfig in EnemySpawner
+Implemented spray fire mode in FireConfig and Shooting
+Bug fixed: multiple projectiles simultaneous hit caused numerous Durability.PerformDestruction() calls
+ProjectileMovementConfig deleted, its functionality migrated to FireConfig and has been expanded
+FireConfig functionality expanded
+Implemented EnemyShooting : Shooting

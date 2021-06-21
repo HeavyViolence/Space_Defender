@@ -1,7 +1,37 @@
 Implement Bootstrapper scene
 
-Implement MusicPlayer
+Implement MusicPlayer : persistent singleton
 
-Implement enemy shooting
+Implement BackgroundAudioPlayer : scene singleton
 
-Note: enemy difficulty by movement type => flank, zigzag, avoid player, seek player, dodge
+Implement bomb projectile
+
+Implement and balance all the enemy ships
+
+Resolve errors:
+1) ProjectileMovement.SetupMovementBounds() NullReferenceException by implementing boostrapper scene with its persistent singletones, SceneLoader and loading boostrapper scene first, then loading test scene
+
+Notes------------------------------------------------------------------------------------------------------------------------
+
+Note: enemy difficulty by movement type ->
+Flank -> Zigzag -> Avoid Player -> Seek Player -> Dodge
+
+Note: enemy shooting types progression ->
+1) Rookie -> Tapper -> Gunner -> Ravager
+2) Sniper -> Piercer -> Sprayer -> Burster
+3) Bomber -> Flinger -> Destroyer -> Eradicator
+
+Rookie: frequent single shots
+Tapper: shoots short bursts with a fast cooldown and low spread
+Gunner: shoots bursts with a noticeable cooldown and moderate spread
+Ravager: shoots long bursts with a long cooldown and high spread
+
+Sniper: rarely shoots a single projectile
+Piercer: rarely shoots a few projectiles with a small cooldown in between
+Sprayer: shoots a few projectiles from each muzzle point with a low spread and medium cooldown
+Burster: shoots several projectiles from each muzzle point with a medium spread and long cooldown
+
+Bomber: shoots a single bomb with a noticeable cooldown
+Flinger: shoots a few bombs with a noticeable cooldown and medium spread
+Destroyer: shoots bomb bursts with a medium cooldown and medium spread
+Eradicator: shoots several bombs from each muzzle point with a high spread and long cooldown

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fcf12a465587e4bb3908848033074c, type: 3}
+  m_Name: Rookie Fire Config
+  m_EditorClassIdentifier: 
+  _fireType: 0
+  _sprayEnabled: 0
+  _sprayShells: 2
+  _sprayShellsRandom: 0
+  _fireDelayEnabled: 1
+  _fireDelay: 2
+  _fireDelayRandom: 0.25
+  _damage: 50
+  _damageRandom: 0.1
+  _speed: 12
+  _speedRandom: 0.05
+  _rotationEnabled: 0
+  _rpm: 30
+  _rpmRandom: 0
+  _dispersion: 0.1
+  _dispersionRandom: 0.25
+  _fireDuration: 5
+  _fireDurationRandom: 0.25
+  _cooldown: 4
+  _cooldownRandom: 0.25
+  _fireRate: 1
+  _fireRateRandom: 0.25
+  _infiniteAmmo: 1
+  _initialAmmo: 0
+  _projectile: {fileID: 3638735962030940354, guid: 1e1129d1815d23c429d5389dcd8e1280, type: 3}
+  _hitEffect: {fileID: 6586495615094078696, guid: 89aa48dc90bfcef4a8c4486cd6539a46, type: 3}
+  _hitEffectDuration: 1
+  _shotAudio: {fileID: 11400000, guid: e5e8573dfa74f9348a31431bcc89235a, type: 2}

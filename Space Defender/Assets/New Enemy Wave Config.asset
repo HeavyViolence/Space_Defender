@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Enemy Wave Config
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 1238999828673324702, guid: 6b658affa9bda6b4780220d265a53c64, type: 3}
+  - {fileID: 5774845840389516131, guid: 7f29fbf333fd30449bdfd1a27919bbfb, type: 3}
   _infiniteEnemies: 1
   _enemiesAmount: 0
   _enemiesAmountRandom: 0

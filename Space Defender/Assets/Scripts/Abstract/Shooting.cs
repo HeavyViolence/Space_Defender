@@ -6,7 +6,7 @@ public abstract class Shooting : MonoBehaviour
 {
     [SerializeField] protected FireConfig _config = null;
 
-    protected Coroutine _firingCoroutine = null;
+    protected Coroutine FiringCoroutine { get; set; } = null;
 
     private readonly List<IMuzzlePoint> _muzzlePoints = new List<IMuzzlePoint>();
     private int _selectedMuzzlePoint = 0;
@@ -14,6 +14,8 @@ public abstract class Shooting : MonoBehaviour
     private int _ammo = 0;
 
     protected virtual float Damage => _config.Damage;
+
+    protected virtual float ProjectileSpeed => _config.Speed;
 
     protected virtual float Dispersion => _config.Dispersion;
 
@@ -25,8 +27,8 @@ public abstract class Shooting : MonoBehaviour
 
     protected int Ammo
     {
-        get => _config.InfiniteAmmo ? -1 : _ammo;
-        set => _ammo = Mathf.Clamp(value, 0, FireConfig.MaxAmmo);
+        get => _config.InfiniteAmmo ? int.MaxValue : _ammo;
+        private set => _ammo = Mathf.Clamp(value, 0, FireConfig.MaxAmmo);
     }
 
     protected GameObject Projectile => _config.Projectile;
@@ -61,30 +63,16 @@ public abstract class Shooting : MonoBehaviour
 
     protected IEnumerator Firing()
     {
-        while (Ammo > 0 || _config.InfiniteAmmo)
+        if (_config.FireDelayEnabled)
+            yield return new WaitForSeconds(_config.FireDelay);
+
+        while (Ammo > 0)
         {
             int projectilesToFire = Mathf.RoundToInt(FireDuration * FireRate);
 
             for (int i = 0; i < projectilesToFire; i++)
             {
-                switch (_config.FireType)
-                {
-                    case FireType.SingleConsecutive:
-                        {
-                            PerformShots(1, _config.FireType);
-                            break;
-                        }
-                    case FireType.SingleRandom:
-                        {
-                            PerformShots(1, _config.FireType);
-                            break;
-                        }
-                    case FireType.AllAtOnce:
-                        {
-                            PerformShots(1, _config.FireType);
-                            break;
-                        }
-                }
+                PerformShots();
 
                 yield return new WaitForSeconds(1f / FireRate);
             }
@@ -92,58 +80,60 @@ public abstract class Shooting : MonoBehaviour
             yield return new WaitForSeconds(Cooldown);
         }
 
-        _firingCoroutine = null;
+        FiringCoroutine = null;
     }
 
-    private void PerformShots(int shotsAmount, FireType fireType)
+    private void PerformShots()
     {
-        for (int i  = 0; i < shotsAmount; i++)
+        switch (_config.FireType)
         {
-            switch (fireType)
-            {
-                case FireType.SingleConsecutive:
-                    {
+            case FireType.SingleConsecutive:
+                {
+                    PerformShot(GetNextMuzzlePoint());
+                    break;
+                }
+            case FireType.SingleRandom:
+                {
+                    PerformShot(GetRandomMuzzlePoint());
+                    break;
+                }
+            case FireType.AllAtOnce:
+                {
+                    for (int j = 0; j < _muzzlePoints.Count; j++)
                         PerformShot(GetNextMuzzlePoint());
-                        break;
-                    }
-                case FireType.SingleRandom:
-                    {
-                        PerformShot(GetRandomMuzzlePoint());
-                        break;
-                    }
-                case FireType.AllAtOnce:
-                    {
-                        for (int j = 0; j < _muzzlePoints.Count; j++)
-                            PerformShot(GetNextMuzzlePoint());
-                        break;
-                    }
-            }
+                    break;
+                }
         }
     }
 
     protected virtual void PerformShot(IMuzzlePoint point)
     {
-        if (Projectile == null)
-            throw new System.Exception("Projectile prefab is not set up!");
+        if (Projectile == null) throw new System.Exception("Projectile prefab is not set up!");
 
-        if (Projectile != null && (Ammo > 0 || _config.InfiniteAmmo))
+        if (Ammo <= 0) return;
+
+        if (_config.SprayEnabled) for (int i = 0; i < _config.SprayShellsAmount; i++) Perform(point);
+        else Perform(point);
+
+        PlayShotAudioIfExists(point.Pos3D);
+
+        Ammo--;
+
+        void Perform(IMuzzlePoint point)
         {
-            Ammo--;
-
             Quaternion dispersion = Quaternion.Euler(point.RotX, point.RotY, Dispersion);
 
             GameObject projectile = Instantiate(Projectile, point.Pos3D, point.Rot4D * dispersion);
 
-            PlayShotAudioIfExists(point.Pos3D);
-
             if (projectile.TryGetComponent(out IDamageDealer d)) d.ProjectileHit += ProjectileHitEventHandler;
+            if (projectile.TryGetComponent(out ProjectileMovement m)) m.SetSpeed(ProjectileSpeed);
         }
     }
 
     protected virtual void ProjectileHitEventHandler(object sender, ProjectileHitEventArgs e)
     {
         e.Recipient?.ApplyDamage(Damage);
-        SpawnHitEffectIfExists(e.HitPos);
+        PlayHitEffectIfExists(e.HitPos);
     }
 
     private void PlayShotAudioIfExists(Vector3 playPos)
@@ -151,7 +141,7 @@ public abstract class Shooting : MonoBehaviour
         if (ShotAudio != null) ShotAudio.PlayRandomClip(playPos);
     }
 
-    private void SpawnHitEffectIfExists(Vector3 hitPos)
+    private void PlayHitEffectIfExists(Vector3 hitPos)
     {
         if (HitEffect != null)
         {
@@ -160,7 +150,8 @@ public abstract class Shooting : MonoBehaviour
         }
     }
 
-    private IMuzzlePoint GetRandomMuzzlePoint() => _muzzlePoints[Random.Range(0, _muzzlePoints.Count)];
+    private IMuzzlePoint GetRandomMuzzlePoint() =>
+        _muzzlePoints[Random.Range(0, _muzzlePoints.Count)];
 
     private IMuzzlePoint GetNextMuzzlePoint()
     {

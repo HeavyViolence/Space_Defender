@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e57e85476487d0e469526a4d6bc2ad82, type: 3}
-  m_Name: Enemy Ship Durability Config
+  m_Name: Rookie Durability Config
   m_EditorClassIdentifier: 
-  _maxDurability: 500
+  _maxDurability: 300
   _maxDurabilityRandom: 0.1
   _reconstructionEnabled: 1
-  _reconstructionRate: 50
-  _reconstructionRateRandom: 0
+  _reconstructionRate: 25
+  _reconstructionRateRandom: 0.1
   _reconstructionBounded: 1
   _reconstructionLowerBound: 0.25
   _reconstructionUpperBound: 1

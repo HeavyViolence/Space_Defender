@@ -2,18 +2,29 @@ using UnityEngine;
 
 public class ProjectileMovement : Movement
 {
-    [SerializeField] private ProjectileMovementConfig _config = null;
+    public const float MovementBoundsDistanceFactor = 2f;
 
-    private Rigidbody2D _rb = null;
+    protected Rigidbody2D Body { get; private set; } = null;
 
-    protected override Vector2 Velocity => new Vector2(0f, _config.Speed);
+    protected float Speed { get; private set; } = 0f;
 
-    protected override bool WithinBounds => AuxMath.ValueWithinRange(Pos.x, _config.LeftBound, _config.RightBound) &&
-                                            AuxMath.ValueWithinRange(Pos.y, _config.LowerBound, _config.UpperBound);
+    protected override Vector2 Velocity => new Vector2(0f, Speed);
+
+    protected float LeftBound { get; private set; } = 0f;
+
+    protected float RightBound { get; private set; } = 0f;
+
+    protected float LowerBound { get; private set; } = 0f;
+
+    protected float UpperBound { get; private set; } = 0f;
+
+    protected override bool WithinBounds => AuxMath.ValueWithinRange(Pos.x, LeftBound, RightBound) &&
+                                            AuxMath.ValueWithinRange(Pos.y, LowerBound, UpperBound);
 
     private void Awake()
     {
-        _rb = SetupRigidbody2D();
+        SetupMovementBounds();
+        Body = SetupRigidbody2D();
     }
 
     private void Start()
@@ -56,15 +67,25 @@ public class ProjectileMovement : Movement
     {
         if (!WithinBounds)
         {
-            float clampedX = Mathf.Clamp(Pos.x, _config.LeftBound, _config.RightBound);
-            float clampedY = Mathf.Clamp(Pos.y, _config.LowerBound, _config.UpperBound);
+            float clampedX = Mathf.Clamp(Pos.x, LeftBound, RightBound);
+            float clampedY = Mathf.Clamp(Pos.y, LowerBound, UpperBound);
 
-            _rb.position = new Vector3(clampedX, clampedY, transform.position.z);
+            Body.position = new Vector2(clampedX, clampedY);
         }
     }
 
     protected override void Move()
     {
-        _rb.AddRelativeForce(Velocity, ForceMode2D.Impulse);
+        Body.AddRelativeForce(Velocity, ForceMode2D.Impulse);
     }
+
+    private void SetupMovementBounds()
+    {
+        LeftBound = CameraHolder.Instance.ViewportLeftBound * MovementBoundsDistanceFactor;
+        RightBound = CameraHolder.Instance.ViewportRightBound * MovementBoundsDistanceFactor;
+        LowerBound = CameraHolder.Instance.ViewportLowerBound * MovementBoundsDistanceFactor;
+        UpperBound = CameraHolder.Instance.ViewportUpperBound * MovementBoundsDistanceFactor;
+    }
+
+    public void SetSpeed(float value) => Speed = Mathf.Abs(value);
 }

@@ -18,12 +18,49 @@ public class AudioCollection : ScriptableObject
 
     [SerializeField] private float _spatialBlend = 0f;
 
-    private int _selectedClipIndex = -1;
+    private int _nextClipIndex = -1;
+
+    private readonly List<int> _selectedClipsIndexers = new List<int>();
+
+    private int RandomClipIndex
+    {
+        get
+        {
+            int index = Random.Range(0, _clips.Count);
+            RememberSelectedClipIndex(index);
+
+            return index;
+        }
+    }
+
+    private int RandomClipIndexUnrepeated
+    {
+        get
+        {
+            int index = AuxMath.GetRandomInRangeWithExceptions(0, _clips.Count, _selectedClipsIndexers.ToArray());
+            RememberSelectedClipIndex(index);
+
+            return index;
+        }
+    }
+
+    private int NextClipIndex
+    {
+        get
+        {
+            if (_nextClipIndex == -1) _nextClipIndex = _clips.Count;
+
+            int index = _nextClipIndex++ % _clips.Count;
+            RememberSelectedClipIndex(index);
+
+            return index;
+        }
+    }
 
     public AudioMixerGroup Group => _group;
 
-    public float Volume => _volume == 1f ? AuxMath.RandomizeDown(_volume, _volumeRandom) :
-                                           AuxMath.Randomize(_volume, _volumeRandom);
+    public float Volume => _volume == 1f ? AuxMath.RandomizeDown(_volume, _volumeRandom)
+                                         : AuxMath.Randomize(_volume, _volumeRandom);
 
     public int Priority => _priority;
 
@@ -35,18 +72,30 @@ public class AudioCollection : ScriptableObject
         AudioPlayer.Instance.PlayAudio(data);
     }
 
+    public void PlayRandomClipUnrepeatedly(Vector3 pos)
+    {
+        AudioData data = new AudioData(GetRandomClipUnrepeated(), Group, Volume, Priority, SpatialBlend, pos);
+        AudioPlayer.Instance.PlayAudio(data);
+    }
+
     public void PlayNextClip(Vector3 pos)
     {
         AudioData data = new AudioData(GetNextClip(), Group, Volume, Priority, SpatialBlend, pos);
         AudioPlayer.Instance.PlayAudio(data);
     }
 
-    private AudioClip GetRandomClip() => _clips[Random.Range(0, _clips.Count)];
+    private AudioClip GetRandomClip() => _clips[RandomClipIndex];
 
-    private AudioClip GetNextClip()
+    private AudioClip GetRandomClipUnrepeated() => _clips[RandomClipIndexUnrepeated];
+
+    private AudioClip GetNextClip() => _clips[NextClipIndex];
+
+    private void RememberSelectedClipIndex(int index)
     {
-        if (_selectedClipIndex == -1) _selectedClipIndex = Random.Range(0, _clips.Count);
+        if (_selectedClipsIndexers.Count == _clips.Count - 1)
+            _selectedClipsIndexers.Clear();
 
-        return _clips[(int)Mathf.Repeat(_selectedClipIndex++, _clips.Count - 1f)];
+        if (!_selectedClipsIndexers.Contains(index))
+            _selectedClipsIndexers.Add(index);
     }
 }

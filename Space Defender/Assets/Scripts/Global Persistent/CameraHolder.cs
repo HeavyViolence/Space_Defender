@@ -4,10 +4,10 @@ public class CameraHolder : GlobalSingleton<CameraHolder>
 {
     public Camera MainCam { get; private set; } = null;
 
-    public float UpperBound { get; private set; } = 0f;
-    public float LowerBound { get; private set; } = 0f;
-    public float LeftBound { get; private set; } = 0f;
-    public float RightBound { get; private set; } = 0f;
+    public float ViewportUpperBound { get; private set; } = 0f;
+    public float ViewportLowerBound { get; private set; } = 0f;
+    public float ViewportLeftBound { get; private set; } = 0f;
+    public float ViewportRightBound { get; private set; } = 0f;
 
     protected override void Awake()
     {
@@ -34,9 +34,9 @@ public class CameraHolder : GlobalSingleton<CameraHolder>
 
     private void SetupBounds()
     {
-        UpperBound = MainCam.ViewportToWorldPoint(Vector3.up).y;
-        LowerBound = MainCam.ViewportToWorldPoint(Vector3.zero).y;
-        LeftBound = MainCam.ViewportToWorldPoint(Vector3.zero).x;
-        RightBound = MainCam.ViewportToWorldPoint(Vector3.right).x;
+        ViewportUpperBound = MainCam.ViewportToWorldPoint(Vector3.up).y;
+        ViewportLowerBound = MainCam.ViewportToWorldPoint(Vector3.zero).y;
+        ViewportLeftBound = MainCam.ViewportToWorldPoint(Vector3.zero).x;
+        ViewportRightBound = MainCam.ViewportToWorldPoint(Vector3.right).x;
     }
 }

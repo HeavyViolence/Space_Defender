@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class AuxMath
@@ -29,18 +30,37 @@ public static class AuxMath
         return value * seed;
     }
 
-    public static float HighestRandom(float value, float factor)
+    public static float GetHighestRandom(float value, float factor)
     {
         float clampedFactor = Mathf.Clamp01(factor);
 
         return value * (1f + clampedFactor);
     }
 
-    public static float LowestRandom(float value, float factor)
+    public static float GetLowestRandom(float value, float factor)
     {
         float clampedFactor = Mathf.Clamp01(factor);
 
         return value * (1f - clampedFactor);
+    }
+
+    public static int GetRandomInRangeWithExceptions(int minInclusive, int maxExclusive, params int[] exceptions)
+    {
+        HashSet<int> excludedNumbers = new HashSet<int>(exceptions);
+
+        int availableNumbersAmount = maxExclusive - minInclusive - excludedNumbers.Count;
+        List<int> availableNumbers = new List<int>(availableNumbersAmount);
+
+        for (int i = minInclusive; i < maxExclusive; i++)
+        {
+            if (excludedNumbers.Contains(i)) continue;
+            
+            availableNumbers.Add(i);
+        }
+
+        int index = Random.Range(0, availableNumbers.Count);
+
+        return availableNumbers[index];
     }
 
     public static bool ValueWithinRange(float value, float min, float max)

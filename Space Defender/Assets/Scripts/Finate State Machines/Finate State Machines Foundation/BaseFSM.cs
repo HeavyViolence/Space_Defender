@@ -35,8 +35,12 @@ public abstract class BaseFSM : MonoBehaviour
 
     public void SetDefaultState(IState state) => _defaultState = state;
 
-    public void AddDefaultStateTransition(Func<bool> condition) =>
+    public void AddDefaultStateTransition(Func<bool> condition)
+    {
+        if (_defaultState == null) return;
+
         _defaultStateTransitions.Add(new Transition(_defaultState, condition));
+    }
 
     public void AddTransition(IState from, IState to, Func<bool> condition)
     {

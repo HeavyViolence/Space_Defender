@@ -22,6 +22,8 @@ public abstract class Durability : MonoBehaviour, IDamageable
         }
     }
 
+    public bool DestructionInProgress { get; private set; } = false;
+
     protected virtual void Awake()
     {
         Value = _config.MaxDurability;
@@ -45,12 +47,17 @@ public abstract class Durability : MonoBehaviour, IDamageable
 
     public void ApplyDamage(float damage)
     {
-        float clampedDamage = Mathf.Clamp(damage, 0f, Mathf.Infinity);
-        Value -= clampedDamage;
+        if (DestructionInProgress) return;
+
+        Value -= Mathf.Abs(damage);
     }
 
     protected virtual void PerformDestruction()
     {
+        if (DestructionInProgress) return;
+
+        DestructionInProgress = true;
+
         PlayExplosionEffectIfExists();
         PlayExplosionAudioIfExists();
 
@@ -69,7 +76,7 @@ public abstract class Durability : MonoBehaviour, IDamageable
     private void PlayExplosionAudioIfExists()
     {
         if (_config.ExplosionAudio != null)
-            _config.ExplosionAudio.PlayRandomClip(transform.position);
+            _config.ExplosionAudio.PlayRandomClipUnrepeatedly(transform.position);
     }
 
     private void Reconstruct()

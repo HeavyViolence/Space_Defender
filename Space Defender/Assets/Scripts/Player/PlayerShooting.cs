@@ -32,9 +32,9 @@ public class PlayerShooting : Shooting
 
     protected override void Fire()
     {
-        if (FirePressed && _firingCoroutine == null && _timer > Cooldown)
+        if (FirePressed && FiringCoroutine == null && _timer > Cooldown)
         {
-            _firingCoroutine = StartCoroutine(Firing());
+            FiringCoroutine = StartCoroutine(Firing());
             _timer = 0f;
         }
 
@@ -42,10 +42,10 @@ public class PlayerShooting : Shooting
         {
             _timer += Time.deltaTime;
 
-            if (_firingCoroutine != null)
+            if (FiringCoroutine != null)
             {
-                StopCoroutine(_firingCoroutine);
-                _firingCoroutine = null;
+                StopCoroutine(FiringCoroutine);
+                FiringCoroutine = null;
             }
         }
     }

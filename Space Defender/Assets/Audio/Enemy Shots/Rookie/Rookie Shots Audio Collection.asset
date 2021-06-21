@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbba6d8473a5d2408e5b0fec44ba52e, type: 3}
+  m_Name: Rookie Shots Audio Collection
+  m_EditorClassIdentifier: 
+  _clips:
+  - {fileID: 8300000, guid: 2ab5e6581b8da4099b0b9bb20e299948, type: 3}
+  - {fileID: 8300000, guid: 4fd106d3dd1584d9983dc2525e85dba0, type: 3}
+  - {fileID: 8300000, guid: f68c01c1d73964d7eb240cac2882db68, type: 3}
+  - {fileID: 8300000, guid: 4bf52ea49a95e4397875d00d1e44f013, type: 3}
+  - {fileID: 8300000, guid: ffbb6c624b04340768ba5c7cb68bf53a, type: 3}
+  - {fileID: 8300000, guid: bc4f8ed4619094373bd9e440772ca38e, type: 3}
+  _group: {fileID: -6031824664880429055, guid: 8101ac679ff0be74ab1c9748ce30e6f6, type: 2}
+  _volume: 1
+  _volumeRandom: 0.1
+  _priority: 128
+  _spatialBlend: 0.5

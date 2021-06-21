@@ -36,21 +36,22 @@ public class EnemySpawner : SceneSingleton<EnemySpawner>
 
             while (wave.EnemiesLeftToSpawn > 0)
             {
-                yield return new WaitForSeconds(wave.SpawnDelay);
                 yield return !SpawnPaused;
 
-                TotalEnemiesSpawned++;
                 Instantiate(wave.GetProbableEnemy(), GetSpawnPos(), Quaternion.identity);
+                TotalEnemiesSpawned++;
+
+                yield return new WaitForSeconds(wave.SpawnDelay);
             }
         }
     }
 
     private Vector3 GetSpawnPos()
     {
-        float x = Random.Range(CameraHolder.Instance.LeftBound * SpawnAreaWidth,
-                               CameraHolder.Instance.RightBound * SpawnAreaWidth);
+        float x = Random.Range(CameraHolder.Instance.ViewportLeftBound * SpawnAreaWidth,
+                               CameraHolder.Instance.ViewportRightBound * SpawnAreaWidth);
 
-        float y = CameraHolder.Instance.UpperBound * (1f + SpawnAreaHeightOffset);
+        float y = CameraHolder.Instance.ViewportUpperBound * (1f + SpawnAreaHeightOffset);
 
         return new Vector3(x, y, 0f);
     }

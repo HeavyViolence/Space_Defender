@@ -67,69 +67,12 @@ public class EnemyWaveConfig : ScriptableObject
 
         if (InfiniteEnemies)
         {
-            EnemiesSpawned++;
-
             return Perform();
         }
         else
         {
             if (EnemiesLeftToSpawn > 0)
             {
-                EnemiesSpawned++;
-                EnemiesLeftToSpawn--;
-
-                return Perform();
-            }
-            else return null;
-        }
-
-        GameObject Perform() =>
-            _enemyPrefabs[UnityEngine.Random.Range(0, _enemyPrefabs.Count)];
-    }
-
-    public GameObject GetNextEnemy()
-    {
-        if (_enemyPrefabs.Count == 0)
-            throw new Exception("Enemy list is empty!");
-
-        if (InfiniteEnemies)
-        {
-            EnemiesSpawned++;
-
-            return Perform();
-        }
-        else
-        {
-            if (EnemiesLeftToSpawn > 0)
-            {
-                EnemiesSpawned++;
-                EnemiesLeftToSpawn--;
-
-                return Perform();
-            }
-            else return null;
-        }
-
-        GameObject Perform() =>
-            _enemyPrefabs[(int)Mathf.Repeat(_selectedEnemyIndex++, _enemyPrefabs.Count - 1f)];
-    }
-
-    public GameObject GetProbableEnemy()
-    {
-        if (_enemyPrefabs.Count == 0)
-            throw new Exception("Enemy list is empty!");
-
-        if (InfiniteEnemies)
-        {
-            EnemiesSpawned++;
-
-            return Perform();
-        }
-        else
-        {
-            if (EnemiesLeftToSpawn > 0)
-            {
-                EnemiesSpawned++;
                 EnemiesLeftToSpawn--;
 
                 return Perform();
@@ -139,6 +82,65 @@ public class EnemyWaveConfig : ScriptableObject
 
         GameObject Perform()
         {
+            EnemiesSpawned++;
+            int index = UnityEngine.Random.Range(0, _enemyPrefabs.Count);
+
+            return _enemyPrefabs[index];
+        }
+    }
+
+    public GameObject GetNextEnemy()
+    {
+        if (_enemyPrefabs.Count == 0)
+            throw new Exception("Enemy list is empty!");
+
+        if (InfiniteEnemies)
+        {
+            return Perform();
+        }
+        else
+        {
+            if (EnemiesLeftToSpawn > 0)
+            {
+                EnemiesLeftToSpawn--;
+
+                return Perform();
+            }
+            else return null;
+        }
+
+        GameObject Perform()
+        {
+            EnemiesSpawned++;
+            int index = (int)Mathf.Repeat(_selectedEnemyIndex++, _enemyPrefabs.Count - 1f);
+
+            return _enemyPrefabs[index];
+        }
+    }
+
+    public GameObject GetProbableEnemy()
+    {
+        if (_enemyPrefabs.Count == 0)
+            throw new Exception("Enemy list is empty!");
+
+        if (InfiniteEnemies)
+        {
+            return Perform();
+        }
+        else
+        {
+            if (EnemiesLeftToSpawn > 0)
+            {
+                EnemiesLeftToSpawn--;
+
+                return Perform();
+            }
+            else return null;
+        }
+
+        GameObject Perform()
+        {
+            EnemiesSpawned++;
             float valueThreshold = UnityEngine.Random.Range(0f, 1f);
 
             for (int i = _enemyPrefabs.Count - 1; i >= 0; i--)
