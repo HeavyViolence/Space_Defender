@@ -17,7 +17,7 @@ MonoBehaviour:
   _sprayShells: 2
   _sprayShellsRandom: 0
   _fireDelayEnabled: 1
-  _fireDelay: 2
+  _fireDelay: 1
   _fireDelayRandom: 0.25
   _damage: 50
   _damageRandom: 0.1
@@ -30,9 +30,9 @@ MonoBehaviour:
   _dispersionRandom: 0.25
   _fireDuration: 5
   _fireDurationRandom: 0.25
-  _cooldown: 4
+  _cooldown: 1
   _cooldownRandom: 0.25
-  _fireRate: 1
+  _fireRate: 0.75
   _fireRateRandom: 0.25
   _infiniteAmmo: 1
   _initialAmmo: 0

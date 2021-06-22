@@ -76,7 +76,7 @@ public abstract class Durability : MonoBehaviour, IDamageable
     private void PlayExplosionAudioIfExists()
     {
         if (_config.ExplosionAudio != null)
-            _config.ExplosionAudio.PlayRandomClipUnrepeatedly(transform.position);
+            _config.ExplosionAudio.PlayRandomClipUnrepeated(transform.position);
     }
 
     private void Reconstruct()

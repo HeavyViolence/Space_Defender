@@ -63,7 +63,7 @@ public class DurabilityConfigEditor : Editor
         if (_target.ReconstructionEnabled)
         {
             EditorGUILayout.Separator();
-            EditorGUILayout.Slider(_reconstructionRate, 0f, DurabilityConfig.MaxReconstruction, "Reconstruction Rate");
+            EditorGUILayout.Slider(_reconstructionRate, 0f, DurabilityConfig.MaxReconstructionRate, "Reconstruction Rate");
             EditorGUILayout.Slider(_reconstructionRateRandom, 0f, 1f, "Random Factor");
 
             EditorGUILayout.Separator();

@@ -6,8 +6,6 @@ public class ProjectileMovement : Movement
 
     protected Rigidbody2D Body { get; private set; } = null;
 
-    protected float Speed { get; private set; } = 0f;
-
     protected override Vector2 Velocity => new Vector2(0f, Speed);
 
     protected float LeftBound { get; private set; } = 0f;
@@ -20,6 +18,10 @@ public class ProjectileMovement : Movement
 
     protected override bool WithinBounds => AuxMath.ValueWithinRange(Pos.x, LeftBound, RightBound) &&
                                             AuxMath.ValueWithinRange(Pos.y, LowerBound, UpperBound);
+
+    private float _speed = 0f;
+
+    public float Speed { get => _speed; set => _speed = Mathf.Abs(value); }
 
     private void Awake()
     {
@@ -86,6 +88,4 @@ public class ProjectileMovement : Movement
         LowerBound = CameraHolder.Instance.ViewportLowerBound * MovementBoundsDistanceFactor;
         UpperBound = CameraHolder.Instance.ViewportUpperBound * MovementBoundsDistanceFactor;
     }
-
-    public void SetSpeed(float value) => Speed = Mathf.Abs(value);
 }

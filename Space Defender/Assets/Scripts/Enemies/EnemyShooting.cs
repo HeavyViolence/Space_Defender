@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EnemyShooting : Shooting
 {
-    [SerializeField] private bool _stopShootingOnLowerBoundReach = false;
-
     protected bool HasEnteredViewport => transform.position.y < CameraHolder.Instance.ViewportUpperBound &&
                                          transform.position.y > CameraHolder.Instance.ViewportLowerBound;
 
@@ -23,7 +21,7 @@ public class EnemyShooting : Shooting
         }
 
         if (HasEscapedViewport &&
-            _stopShootingOnLowerBoundReach &&
+            !_config.ShootingOnLowerBoundReachEnabled &&
             FiringCoroutine != null)
         {
             StopCoroutine(FiringCoroutine);

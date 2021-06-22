@@ -66,22 +66,28 @@ public class AudioCollection : ScriptableObject
 
     public float SpatialBlend => _spatialBlend;
 
-    public void PlayRandomClip(Vector3 pos)
+    public AudioData PlayRandomClip(Vector3 playPos)
     {
-        AudioData data = new AudioData(GetRandomClip(), Group, Volume, Priority, SpatialBlend, pos);
+        var data = new AudioData(GetRandomClip(), Group, Volume, Priority, SpatialBlend, playPos);
         AudioPlayer.Instance.PlayAudio(data);
+
+        return data;
     }
 
-    public void PlayRandomClipUnrepeatedly(Vector3 pos)
+    public AudioData PlayRandomClipUnrepeated(Vector3 playPos)
     {
-        AudioData data = new AudioData(GetRandomClipUnrepeated(), Group, Volume, Priority, SpatialBlend, pos);
+        var data = new AudioData(GetRandomClipUnrepeated(), Group, Volume, Priority, SpatialBlend, playPos);
         AudioPlayer.Instance.PlayAudio(data);
+
+        return data;
     }
 
-    public void PlayNextClip(Vector3 pos)
+    public AudioData PlayNextClip(Vector3 playPos)
     {
-        AudioData data = new AudioData(GetNextClip(), Group, Volume, Priority, SpatialBlend, pos);
+        var data = new AudioData(GetNextClip(), Group, Volume, Priority, SpatialBlend, playPos);
         AudioPlayer.Instance.PlayAudio(data);
+
+        return data;
     }
 
     private AudioClip GetRandomClip() => _clips[RandomClipIndex];

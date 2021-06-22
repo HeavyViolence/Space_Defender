@@ -75,6 +75,8 @@ public class FireConfig : ScriptableObject
     [SerializeField] private bool _infiniteAmmo = false;
     [SerializeField] private int _initialAmmo = 0;
 
+    [SerializeField] private bool _shootingOnLowerBoundReachEnabled = false;
+
     [SerializeField] private GameObject _projectile = null;
 
     [SerializeField] private GameObject _hitEffect = null;
@@ -152,6 +154,8 @@ public class FireConfig : ScriptableObject
     public bool InfiniteAmmo => _infiniteAmmo;
 
     public int InitialAmmo => _initialAmmo;
+
+    public bool ShootingOnLowerBoundReachEnabled => _shootingOnLowerBoundReachEnabled;
 
     public GameObject Projectile => _projectile;
 

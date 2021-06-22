@@ -6,7 +6,7 @@ public class DurabilityConfig : ScriptableObject
     public const float DurabilityFloor = 100f;
     public const float DurabilityCeiling = 100000f;
 
-    public const float MaxReconstruction = 100f;
+    public const float MaxReconstructionRate = 100f;
 
     public const float MinExplosionDuration = 1f;
     public const float MaxExplosionDuration = 5f;
@@ -55,7 +55,7 @@ public class DurabilityConfig : ScriptableObject
 
     public AudioCollection ExplosionAudio => _explosionAudio;
 
-    private void OnEnable()
+    private void Awake()
     {
         MaxDurability = AuxMath.Randomize(_maxDurability, _maxDurabilityRandom);
         ReconstructionRate = AuxMath.Randomize(_reconstructionRate, _reconstructionRateRandom);

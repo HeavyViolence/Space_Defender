@@ -41,6 +41,8 @@ public class FireConfigEditor : Editor
     private SerializedProperty _infiniteAmmo;
     private SerializedProperty _initialAmmo;
 
+    private SerializedProperty _shootingOnLowerBoundReachEnabled;
+
     private SerializedProperty _projectile;
 
     private SerializedProperty _hitEffect;
@@ -88,6 +90,8 @@ public class FireConfigEditor : Editor
         _infiniteAmmo = serializedObject.FindProperty("_infiniteAmmo");
         _initialAmmo = serializedObject.FindProperty("_initialAmmo");
 
+        _shootingOnLowerBoundReachEnabled = serializedObject.FindProperty("_shootingOnLowerBoundReachEnabled");
+
         _projectile = serializedObject.FindProperty("_projectile");
 
         _hitEffect = serializedObject.FindProperty("_hitEffect");
@@ -100,7 +104,7 @@ public class FireConfigEditor : Editor
     {
         serializedObject.Update();
 
-        EditorGUILayout.LabelField("General Fire Properties:");
+        EditorGUILayout.LabelField("General Properties:");
 
         EditorGUILayout.Separator();
         EditorGUILayout.PropertyField(_fireType, new GUIContent("Fire Type"));
@@ -162,7 +166,10 @@ public class FireConfigEditor : Editor
         if (!_config.InfiniteAmmo) EditorGUILayout.IntSlider(_initialAmmo, 0, FireConfig.MaxAmmo, "Initial Ammo");
 
         EditorGUILayout.Separator();
-        EditorGUILayout.LabelField("Fire Prefabs:");
+        EditorGUILayout.PropertyField(_shootingOnLowerBoundReachEnabled, new GUIContent("Enable Shooting On Lower Bound Reach"));
+
+        EditorGUILayout.Separator();
+        EditorGUILayout.LabelField("Assets:");
 
         EditorGUILayout.Separator();
         EditorGUILayout.PropertyField(_projectile, new GUIContent("Projectile Prefab"));

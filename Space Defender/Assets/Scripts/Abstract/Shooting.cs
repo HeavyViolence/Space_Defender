@@ -126,7 +126,7 @@ public abstract class Shooting : MonoBehaviour
             GameObject projectile = Instantiate(Projectile, point.Pos3D, point.Rot4D * dispersion);
 
             if (projectile.TryGetComponent(out IDamageDealer d)) d.ProjectileHit += ProjectileHitEventHandler;
-            if (projectile.TryGetComponent(out ProjectileMovement m)) m.SetSpeed(ProjectileSpeed);
+            if (projectile.TryGetComponent(out ProjectileMovement m)) m.Speed = ProjectileSpeed;
         }
     }
 

@@ -121,3 +121,11 @@ Bug fixed: multiple projectiles simultaneous hit caused numerous Durability.Perf
 ProjectileMovementConfig deleted, its functionality migrated to FireConfig and has been expanded
 FireConfig functionality expanded
 Implemented EnemyShooting : Shooting
+
+v0.0.15:
+EnemyShooting functionality has been generalized and migrated to FireConfig
+Implemented Bootstrapper scene
+Implemented SceneLoader
+Imported game music
+Implemented MusicPlayer
+All AudioCollection Play...() type methods are now return AudioData instead of void

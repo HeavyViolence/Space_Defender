@@ -107,7 +107,7 @@ public class AudioPlayer : GlobalSingleton<AudioPlayer>
         source.volume = data.Volume;
         source.spatialBlend = data.SpatialBlend;
 
-        source.transform.position = data.Pos;
+        source.transform.position = data.PlayPos;
 
         source.gameObject.SetActive(true);
 

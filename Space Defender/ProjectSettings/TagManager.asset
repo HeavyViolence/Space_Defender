@@ -44,9 +44,6 @@ TagManager:
   - name: Background
     uniqueID: 1220673625
     locked: 0
-  - name: Particle Effect
-    uniqueID: 3106775287
-    locked: 0
   - name: Enemy Projectile
     uniqueID: 1667009381
     locked: 0
@@ -58,4 +55,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4072317175
+    locked: 0
+  - name: Particle Effect
+    uniqueID: 3106775287
     locked: 0

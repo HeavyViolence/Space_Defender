@@ -1,15 +1,37 @@
-Implement Bootstrapper scene
-
-Implement MusicPlayer : persistent singleton
-
 Implement BackgroundAudioPlayer : scene singleton
 
-Implement bomb projectile
+Implement rotating bomb projectile
+Implement bomb projectile explosion VFX
+Add bomb projectile explosion SFX
 
 Implement and balance all the enemy ships
 
-Resolve errors:
-1) ProjectileMovement.SetupMovementBounds() NullReferenceException by implementing boostrapper scene with its persistent singletones, SceneLoader and loading boostrapper scene first, then loading test scene
+Implement PlayerPower with static property Value:
+1) Holds all config data containers references of a player
+2) Calculates player total power value
+
+Implement PlayerAugmentorConfig:
+1) Holds by every player-related script that holds any config data container
+2) Provides a value augmentors for every player-related value
+3) Provides functionality to increase value augmentors
+4) Saves and loads data between sessions to disk
+
+Implement DataBase to save and load any necessary data to or from disk
+
+Implement LevelDifficulty : SceneSingleton
+
+Implement LevelDifficultyConfig:
+1) Level difficulty
+2) Easy enemy difficulty match
+3) Medium enemy difficulty match
+4) Hard enemy difficulty match
+5) Insane enemy difficulty match
+6*) Random factors, and corresponding properties setup
+7*) Custom editor
+
+Implement EnemyDifficultyBalancer:
+1) Holds all config data containers references of its enemy
+2) Calculates additive balancing values for its enemy properties
 
 Notes------------------------------------------------------------------------------------------------------------------------
 
@@ -35,3 +57,8 @@ Bomber: shoots a single bomb with a noticeable cooldown
 Flinger: shoots a few bombs with a noticeable cooldown and medium spread
 Destroyer: shoots bomb bursts with a medium cooldown and medium spread
 Eradicator: shoots several bombs from each muzzle point with a high spread and long cooldown
+
+Note: asset references
+1) Music: Wictoria Zac, wiktoriazac@gmail.com, PHOBOS, volume 1
+2) Game audio effects: Rich, Sci-Fi Weapons Cyberpunk Arsenal, rich@shapeforms.com
+3) Sprites: kenney.nl, game-icons.net
