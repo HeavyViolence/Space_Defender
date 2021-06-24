@@ -11,8 +11,6 @@ public class CameraShaker : GlobalSingleton<CameraShaker>
 
     private Vector2 _homePos = Vector2.zero;
 
-    public Camera MainCam { get; private set; } = null;
-
     public bool ShakeEnabled { get; set; } = true;
 
     protected override void Awake()
@@ -20,22 +18,6 @@ public class CameraShaker : GlobalSingleton<CameraShaker>
         base.Awake();
 
         _rb = SetupRigidbody2D();
-        MainCam = SetupMainCam();
-    }
-
-    private Camera SetupMainCam()
-    {
-        Camera cam;
-
-        if (gameObject.TryGetComponent(out Camera c)) cam = c;
-        else cam = gameObject.AddComponent<Camera>();
-
-        cam.orthographic = true;
-        cam.orthographicSize = 6f;
-
-        _homePos = cam.transform.position;
-
-        return cam;
     }
 
     private Rigidbody2D SetupRigidbody2D()
@@ -75,7 +57,7 @@ public class CameraShaker : GlobalSingleton<CameraShaker>
         cutoff = Mathf.Clamp01(cutoff);
 
         float timer = 0f;
-        float duration = -Mathf.Log(cutoff, AuxMath.E) / attenuation;
+        float duration = -1f * Mathf.Log(cutoff, AuxMath.E) / attenuation;
 
         while (timer < duration)
         {

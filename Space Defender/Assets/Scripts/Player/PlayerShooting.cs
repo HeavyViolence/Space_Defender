@@ -18,16 +18,23 @@ public class PlayerShooting : Shooting
     private void OnEnable()
     {
         _controls.Enable();
+        PlayerDurability.PlayerDied += PlayerDiedEventHandler;
     }
 
     private void OnDisable()
     {
         _controls.Disable();
+        PlayerDurability.PlayerDied -= PlayerDiedEventHandler;
     }
 
     protected void Update()
     {
         Fire();
+    }
+
+    private void PlayerDiedEventHandler(object sender, System.EventArgs e)
+    {
+        _controls.Disable();
     }
 
     protected override void Fire()

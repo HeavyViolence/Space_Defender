@@ -30,14 +30,14 @@ public static class AuxMath
         return value * seed;
     }
 
-    public static float GetHighestRandom(float value, float factor)
+    public static float MaxRandom(float value, float factor)
     {
         float clampedFactor = Mathf.Clamp01(factor);
 
         return value * (1f + clampedFactor);
     }
 
-    public static float GetLowestRandom(float value, float factor)
+    public static float MinRandom(float value, float factor)
     {
         float clampedFactor = Mathf.Clamp01(factor);
 

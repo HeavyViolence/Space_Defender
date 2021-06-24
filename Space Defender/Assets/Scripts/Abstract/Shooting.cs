@@ -51,7 +51,10 @@ public abstract class Shooting : MonoBehaviour
 
     private void FindAllMuzzlePoints()
     {
-        foreach (var p in gameObject.GetComponentsInChildren<MuzzlePoint>()) _muzzlePoints.Add(p);
+        foreach (var p in gameObject.GetComponentsInChildren<MuzzlePoint>())
+            _muzzlePoints.Add(p);
+
+        _config.GunsAmount = _muzzlePoints.Count;
     }
 
     private void SetRandomSelectedMuzzlePoint()
@@ -72,7 +75,7 @@ public abstract class Shooting : MonoBehaviour
 
             for (int i = 0; i < projectilesToFire; i++)
             {
-                PerformShots();
+                HandleShot();
 
                 yield return new WaitForSeconds(1f / FireRate);
             }
@@ -83,7 +86,7 @@ public abstract class Shooting : MonoBehaviour
         FiringCoroutine = null;
     }
 
-    private void PerformShots()
+    private void HandleShot()
     {
         switch (_config.FireType)
         {
@@ -110,9 +113,11 @@ public abstract class Shooting : MonoBehaviour
     {
         if (Projectile == null) throw new System.Exception("Projectile prefab is not set up!");
 
-        if (Ammo <= 0) return;
+        if (Ammo == 0) return;
 
-        if (_config.SprayEnabled) for (int i = 0; i < _config.SprayShellsAmount; i++) Perform(point);
+        if (_config.SprayEnabled)
+            for (int i = 0; i < _config.SprayShellsAmount; i++) Perform(point);
+        
         else Perform(point);
 
         PlayShotAudioIfExists(point.Pos3D);

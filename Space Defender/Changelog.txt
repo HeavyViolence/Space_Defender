@@ -129,3 +129,13 @@ Implemented SceneLoader
 Imported game music
 Implemented MusicPlayer
 All AudioCollection Play...() type methods are now return AudioData instead of void
+
+v0.0.16:
+Durability minor improvements
+Bug fixed: enemies now cannot be killed while they beyond the viewport bounds
+Bug fixed: not only CameraHolder was responsible for main camera setup
+Implemented main AudioListener property in CameraHolder
+FireConfig functionality expanded: added DPS, GunsAmount properties
+ShipMovementConfig functionality expanded: added average speed properties
+SceneLoader functionality expanded
+Implemented PlayerDurability

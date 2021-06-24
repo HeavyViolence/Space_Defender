@@ -8,11 +8,11 @@ public abstract class Durability : MonoBehaviour, IDamageable
 
     private float _value = 0f;
 
-    public float Value
+    protected float Value
     {
         get => _value;
 
-        protected set
+        set
         {
             _value = Mathf.Clamp(value, 0f, _config.MaxDurability);
 
@@ -22,11 +22,22 @@ public abstract class Durability : MonoBehaviour, IDamageable
         }
     }
 
-    public bool DestructionInProgress { get; private set; } = false;
+    protected virtual float MaxValue => _config.MaxDurability;
+
+    protected float TotalRegainedValue { get; private set; } = 0f;
+
+    protected bool DestructionInProgress { get; private set; } = false;
+
+    protected bool ReconstructionActive => _config.ReconstructionEnabled &&
+                                           _config.ReconstructionRate > 0f &&
+                                           Value < MaxValue;
+
+    protected bool ValueInReconstructionRange =>
+        AuxMath.ValueWithinRange(Value, _config.ReconstructionLowerBound, _config.ReconstructionUpperBound);
 
     protected virtual void Awake()
     {
-        Value = _config.MaxDurability;
+        Value = MaxValue;
     }
 
     protected virtual void Update()
@@ -45,7 +56,7 @@ public abstract class Durability : MonoBehaviour, IDamageable
         }
     }
 
-    public void ApplyDamage(float damage)
+    public virtual void ApplyDamage(float damage)
     {
         if (DestructionInProgress) return;
 
@@ -60,8 +71,6 @@ public abstract class Durability : MonoBehaviour, IDamageable
 
         PlayExplosionEffectIfExists();
         PlayExplosionAudioIfExists();
-
-        Destroy(gameObject);
     }
 
     private void PlayExplosionEffectIfExists()
@@ -81,24 +90,27 @@ public abstract class Durability : MonoBehaviour, IDamageable
 
     private void Reconstruct()
     {
-        if (_config.ReconstructionEnabled && _config.ReconstructionRate > 0f)
+        if (ReconstructionActive)
         {
             if (_config.ReconstructionBounded)
             {
-                if (AuxMath.ValueWithinRange(Value, _config.ReconstructionLowerBound, _config.ReconstructionUpperBound))
-                {
-                    Value += _config.ReconstructionRate * Time.deltaTime;
+                if (ValueInReconstructionRange)
+                    Perform();
 
-                    if (!_healthbar.BlinkingEnabled) _healthbar.EnableBlinking();
-                }
-                else if (_healthbar.BlinkingEnabled) _healthbar.DisableBlinking();
+                else if (_healthbar.BlinkingEnabled)
+                    _healthbar.DisableBlinking();
             }
-            else
-            {
-                Value += _config.ReconstructionRate * Time.deltaTime;
+            else Perform();
+        }
 
-                if (!_healthbar.BlinkingEnabled) _healthbar.EnableBlinking();
-            }
+        void Perform()
+        {
+            float gainedValue = _config.ReconstructionRate * Time.deltaTime;
+
+            Value += gainedValue;
+            TotalRegainedValue += gainedValue;
+
+            if (!_healthbar.BlinkingEnabled) _healthbar.EnableBlinking();
         }
     }
 }

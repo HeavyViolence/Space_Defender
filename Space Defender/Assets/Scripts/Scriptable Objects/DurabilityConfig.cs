@@ -31,17 +31,17 @@ public class DurabilityConfig : ScriptableObject
 
     public float MaxDurability { get; private set; } = DurabilityFloor;
 
-    public float LowestMaxDurability => AuxMath.GetLowestRandom(_maxDurability, _maxDurabilityRandom);
+    public float LowestMaxDurability => AuxMath.MinRandom(_maxDurability, _maxDurabilityRandom);
 
-    public float HighestMaxDurability => AuxMath.GetHighestRandom(_maxDurability, _maxDurabilityRandom);
+    public float HighestMaxDurability => AuxMath.MaxRandom(_maxDurability, _maxDurabilityRandom);
 
     public bool ReconstructionEnabled => _reconstructionEnabled;
 
     public float ReconstructionRate { get; private set; } = 0f;
 
-    public float LowestReconstructionRate => AuxMath.GetLowestRandom(_reconstructionRate, _reconstructionRateRandom);
+    public float LowestReconstructionRate => AuxMath.MinRandom(_reconstructionRate, _reconstructionRateRandom);
 
-    public float HighestReconstructionRate => AuxMath.GetHighestRandom(_reconstructionRate, _reconstructionRateRandom);
+    public float HighestReconstructionRate => AuxMath.MaxRandom(_reconstructionRate, _reconstructionRateRandom);
 
     public bool ReconstructionBounded => _reconstructionBounded;
 

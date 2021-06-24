@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 612811378}
   - component: {fileID: 612811377}
-  - component: {fileID: 612811376}
   - component: {fileID: 612811375}
   m_Layer: 0
   m_Name: Camera (to be deleted)
@@ -141,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &612811375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,14 +173,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &612811376
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612811374}
-  m_Enabled: 1
 --- !u!20 &612811377
 Camera:
   m_ObjectHideFlags: 0
@@ -339,6 +330,7 @@ GameObject:
   - component: {fileID: 1499663819}
   - component: {fileID: 1499663820}
   - component: {fileID: 1499663821}
+  - component: {fileID: 1499663822}
   m_Layer: 7
   m_Name: Player Ship Basic
   m_TagString: Untagged
@@ -433,6 +425,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 03854909be5fd1a43abfe49764110838, type: 2}
+--- !u!114 &1499663822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499663815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bbac18f6f526a419dbba1d74192b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 318490f450c22c24fb34591b0bf07ff5, type: 2}
+  _healthbar: {fileID: 0}
+  _collider: {fileID: 1499663820}
 --- !u!1 &1760662966
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,11 +6,13 @@ Add bomb projectile explosion SFX
 
 Implement and balance all the enemy ships
 
-Implement PlayerPower with static property Value:
+Implement PlayerPower : SceneSingleton with Value property:
 1) Holds all config data containers references of a player
-2) Calculates player total power value
+2) Calculates player power value: all properties accounted except speeds
 
-Implement PlayerAugmentorConfig:
+Augmented parameters: max durability, durability regen, speed, projectile speed, damage, fire rate, fire duration, cooldown duration
+
+Implement PlayerAugmentor:
 1) Holds by every player-related script that holds any config data container
 2) Provides a value augmentors for every player-related value
 3) Provides functionality to increase value augmentors
@@ -32,6 +34,9 @@ Implement LevelDifficultyConfig:
 Implement EnemyDifficultyBalancer:
 1) Holds all config data containers references of its enemy
 2) Calculates additive balancing values for its enemy properties
+3) Balancing values: DPS (additive balancing value goes to damage), max durability, durability regeneration
+
+Implement stardust effect (fast and slow dust motes)
 
 Notes------------------------------------------------------------------------------------------------------------------------
 

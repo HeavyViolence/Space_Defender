@@ -4,6 +4,8 @@ public class CameraHolder : GlobalSingleton<CameraHolder>
 {
     public Camera MainCam { get; private set; } = null;
 
+    public AudioListener Listener { get; private set; } = null;
+
     public float ViewportUpperBound { get; private set; } = 0f;
     public float ViewportLowerBound { get; private set; } = 0f;
     public float ViewportLeftBound { get; private set; } = 0f;
@@ -14,6 +16,7 @@ public class CameraHolder : GlobalSingleton<CameraHolder>
         base.Awake();
 
         MainCam = SetupCamera();
+        Listener = SetupAudioListener();
         SetupBounds();
     }
 
@@ -28,8 +31,21 @@ public class CameraHolder : GlobalSingleton<CameraHolder>
         cam.orthographicSize = 6f;
         cam.nearClipPlane = 1f;
         cam.farClipPlane = 1000f;
+        cam.transform.position = new Vector3(0f, 0f, -10f);
 
         return cam;
+    }
+
+    private AudioListener SetupAudioListener()
+    {
+        AudioListener listener;
+
+        if (gameObject.TryGetComponent(out AudioListener l)) listener = l;
+        else listener = gameObject.AddComponent<AudioListener>();
+
+        listener.enabled = false;
+
+        return listener;
     }
 
     private void SetupBounds()

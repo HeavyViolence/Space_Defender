@@ -30,11 +30,13 @@ public sealed class PlayerMovement : ShipMovement
     private void OnEnable()
     {
         _controls.Enable();
+        PlayerDurability.PlayerDied += PlayerDiedEventHandler;
     }
 
     private void OnDisable()
     {
         _controls.Disable();
+        PlayerDurability.PlayerDied -= PlayerDiedEventHandler;
     }
 
     private void FixedUpdate()
@@ -45,6 +47,11 @@ public sealed class PlayerMovement : ShipMovement
     private void Update()
     {
         WatchfForBounds();
+    }
+
+    private void PlayerDiedEventHandler(object sender, System.EventArgs e)
+    {
+        _controls.Disable();
     }
 
     private Rigidbody2D SetupRigidbody2D()
