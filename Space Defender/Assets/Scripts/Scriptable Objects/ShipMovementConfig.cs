@@ -77,6 +77,4 @@ public class ShipMovementConfig : ScriptableObject
     public float AverageXSpeed => XSpeed * XSpeedDuration / (XSpeedDuration + XSpeedTransitionDuration);
 
     public float AverageYSpeed => YSpeed * YSpeedDuration / (YSpeedDuration + YSpeedTransitionDuration);
-
-    public float AverageSpeed2D => Mathf.Sqrt(AverageXSpeed * AverageXSpeed + AverageYSpeed * AverageYSpeed);
 }

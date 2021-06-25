@@ -139,3 +139,8 @@ FireConfig functionality expanded: added DPS, GunsAmount properties
 ShipMovementConfig functionality expanded: added average speed properties
 SceneLoader functionality expanded
 Implemented PlayerDurability
+
+v0.0.17:
+Introduced PlayerPower : SceneSingleton
+Implemented DataBase : GlobalSingleton
+Implemented SavableDataShell

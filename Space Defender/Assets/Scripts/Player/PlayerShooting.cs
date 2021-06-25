@@ -10,9 +10,9 @@ public class PlayerShooting : Shooting
 
     protected override void Awake()
     {
-        _controls = new PlayerControls();
-
         base.Awake();
+
+        _controls = new PlayerControls();
     }
 
     private void OnEnable()

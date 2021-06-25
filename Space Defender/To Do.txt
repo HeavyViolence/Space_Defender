@@ -18,8 +18,6 @@ Implement PlayerAugmentor:
 3) Provides functionality to increase value augmentors
 4) Saves and loads data between sessions to disk
 
-Implement DataBase to save and load any necessary data to or from disk
-
 Implement LevelDifficulty : SceneSingleton
 
 Implement LevelDifficultyConfig:
