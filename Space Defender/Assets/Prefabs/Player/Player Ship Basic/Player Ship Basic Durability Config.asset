@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57e85476487d0e469526a4d6bc2ad82, type: 3}
   m_Name: Player Ship Basic Durability Config
   m_EditorClassIdentifier: 
-  _maxDurability: 100
+  _maxDurability: 1000
   _maxDurabilityRandom: 0.1
   _reconstructionEnabled: 0
   _reconstructionRate: 0

@@ -1,11 +1,51 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization;
+using UnityEngine;
 
 public class DataBase : GlobalSingleton<DataBase>
 {
+    public const string SaveFileName = "SpaceDefenderSavedData";
+    public const string SaveFileExtension = ".save";
+
     private Dictionary<string, int> _intData = new Dictionary<string, int>();
     private Dictionary<string, float> _floatData = new Dictionary<string, float>();
     private Dictionary<string, string> _stringData = new Dictionary<string, string>();
     private Dictionary<string, bool> _booleanData = new Dictionary<string, bool>();
+
+    public string SavePath => Path.Combine(Application.persistentDataPath,
+                                           SaveFileName + SaveFileExtension);
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        LoadDataFromHardDrive();
+    }
+
+    private void SaveDataToHardDrive()
+    {
+        using var writer = new FileStream(SavePath, FileMode.Create);
+        var shell = new SavableDataShell(_intData, _floatData, _stringData, _booleanData);
+        var serializer = new DataContractSerializer(typeof(SavableDataShell));
+
+        serializer.WriteObject(writer, shell);
+    }
+
+    private void LoadDataFromHardDrive()
+    {
+        if (File.Exists(SavePath))
+        {
+            using var reader = new FileStream(SavePath, FileMode.Open);
+            var serializer = new DataContractSerializer(typeof(SavableDataShell));
+            var shell = (SavableDataShell)serializer.ReadObject(reader);
+
+            _intData = shell.IntData;
+            _floatData = shell.FloatData;
+            _stringData = shell.StringData;
+            _booleanData = shell.BooleanData;
+        }
+    }
 
     public void SaveInt(string key, int value)
     {
@@ -13,6 +53,8 @@ public class DataBase : GlobalSingleton<DataBase>
             _intData.Remove(key);
 
         _intData.Add(key, value);
+
+        SaveDataToHardDrive();
     }
 
     public bool TryGetInt(string key, out int value) =>
@@ -24,6 +66,8 @@ public class DataBase : GlobalSingleton<DataBase>
             _floatData.Remove(key);
 
         _floatData.Add(key, value);
+
+        SaveDataToHardDrive();
     }
 
     public bool TryGetFloat(string key, out float value) =>
@@ -35,6 +79,8 @@ public class DataBase : GlobalSingleton<DataBase>
             _stringData.Remove(key);
 
         _stringData.Add(key, value);
+
+        SaveDataToHardDrive();
     }
 
     public bool TryGetString(string key, out string value) =>
@@ -46,19 +92,10 @@ public class DataBase : GlobalSingleton<DataBase>
             _booleanData.Remove(key);
 
         _booleanData.Add(key, value);
+
+        SaveDataToHardDrive();
     }
 
     public bool TryGetBoolean(string key, out bool value) =>
         _booleanData.TryGetValue(key, out value);
-
-    public SavableDataShell GetData() =>
-        new SavableDataShell(_intData, _floatData, _stringData, _booleanData);
-
-    public void SetData(SavableDataShell data)
-    {
-        _intData = data.IntData;
-        _floatData = data.FloatData;
-        _stringData = data.StringData;
-        _booleanData = data.BooleanData;
-    }
 }

@@ -13,6 +13,7 @@ public class PlayerShooting : Shooting
         base.Awake();
 
         _controls = new PlayerControls();
+        DataBase.Instance.SaveBoolean("My bool!", true);
     }
 
     private void OnEnable()

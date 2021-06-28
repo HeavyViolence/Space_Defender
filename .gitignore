@@ -44,3 +44,6 @@ sysinfo.txt
 *.log
 *.wav
 *.log
+Space Defender/Logs/AssetImportWorker0.log
+Space Defender/Logs/shadercompiler-AssetImportWorker0.log
+Space Defender/Logs/shadercompiler-UnityShaderCompiler.exe0.log

@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
-[System.Serializable]
+[DataContract]
 public class SavableDataShell
 {
-    public Dictionary<string, int> IntData { get; }
-    public Dictionary<string, float> FloatData { get; }
-    public Dictionary<string, string> StringData { get; }
-    public Dictionary<string, bool> BooleanData { get; }
+    [DataMember] public Dictionary<string, int> IntData { get; }
+    [DataMember] public Dictionary<string, float> FloatData { get; }
+    [DataMember] public Dictionary<string, string> StringData { get; }
+    [DataMember] public Dictionary<string, bool> BooleanData { get; }
 
     public SavableDataShell(Dictionary<string, int> intData,
                             Dictionary<string, float> floatData,

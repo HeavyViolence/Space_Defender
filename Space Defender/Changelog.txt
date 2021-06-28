@@ -144,3 +144,7 @@ v0.0.17:
 Introduced PlayerPower : SceneSingleton
 Implemented DataBase : GlobalSingleton
 Implemented SavableDataShell
+
+v0.0.18:
+Implemented local save/load functionality in DataBase
+Implemented spaceship engine exhaust shader graph
