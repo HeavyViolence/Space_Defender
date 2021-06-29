@@ -37,6 +37,12 @@ public class FireConfig : ScriptableObject
 
     public const int MaxAmmo = 999;
 
+    public const int MinRefilledAmmoAmount = 1;
+    public const int MaxRefilledAmmoAmount = 100;
+
+    public const float MinAmmoRefillDelay = 1f;
+    public const float MaxAmmoRefillDelay = 60f;
+
     public const float MinHitEffectDuration = 1f;
     public const float MaxHitEffectDuration = 5f;
 
@@ -75,6 +81,14 @@ public class FireConfig : ScriptableObject
     [SerializeField] private bool _infiniteAmmo = false;
     [SerializeField] private int _initialAmmo = 0;
 
+    [SerializeField] private bool _refillAmmo = false;
+
+    [SerializeField] private float _ammoRefillDelay = MinAmmoRefillDelay;
+    [SerializeField] private float _ammoRefillDelayRandom = 0f;
+
+    [SerializeField] private int _refilledAmmoAmount = MinRefilledAmmoAmount;
+    [SerializeField] private float _refilledAmmoAmountRandom = 0f;
+
     [SerializeField] private bool _shootingOnLowerBoundReachEnabled = false;
 
     [SerializeField] private GameObject _projectile = null;
@@ -83,6 +97,7 @@ public class FireConfig : ScriptableObject
     [SerializeField] private float _hitEffectDuration = MinHitEffectDuration;
 
     [SerializeField] private AudioCollection _shotAudio = null;
+    [SerializeField] private AudioCollection _hitAudio = null;
 
     public FireType FireType => _fireType;
 
@@ -175,9 +190,23 @@ public class FireConfig : ScriptableObject
 
     public float LowestFireRate => AuxMath.MinRandom(_fireRate, _fireRateRandom);
 
-    public bool InfiniteAmmo => _infiniteAmmo;
+    public bool InfiniteAmmoEnabled => _infiniteAmmo;
 
     public int InitialAmmo => _initialAmmo;
+
+    public bool AmmoReplenismentEnabled => _refillAmmo;
+
+    public float AmmoRefillDelay => AuxMath.Randomize(_ammoRefillDelay, _ammoRefillDelayRandom);
+
+    public int RefilledAmmoAmount
+    {
+        get
+        {
+            float rawValue = AuxMath.Randomize(_refilledAmmoAmount, _refilledAmmoAmountRandom);
+
+            return Mathf.RoundToInt(rawValue);
+        }
+    }
 
     public bool ShootingOnLowerBoundReachEnabled => _shootingOnLowerBoundReachEnabled;
 
@@ -188,6 +217,8 @@ public class FireConfig : ScriptableObject
     public float HitEffectDuration => _hitEffectDuration;
 
     public AudioCollection ShotAudio => _shotAudio;
+
+    public AudioCollection HitAudio => _hitAudio;
 
     public float DPS
     {

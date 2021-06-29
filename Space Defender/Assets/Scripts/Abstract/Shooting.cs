@@ -27,26 +27,21 @@ public abstract class Shooting : MonoBehaviour
 
     protected int Ammo
     {
-        get => _config.InfiniteAmmo ? int.MaxValue : _ammo;
+        get => _config.InfiniteAmmoEnabled ? int.MaxValue : _ammo;
         private set => _ammo = Mathf.Clamp(value, 0, FireConfig.MaxAmmo);
     }
-
-    protected GameObject Projectile => _config.Projectile;
-
-    protected GameObject HitEffect => _config.HitEffect;
-
-    protected AudioCollection ShotAudio => _config.ShotAudio;
 
     protected virtual void Awake()
     {
         SetupInitialAmmo();
         FindAllMuzzlePoints();
         SetRandomSelectedMuzzlePoint();
+        SetupAmmoReplenishment();
     }
 
     private void SetupInitialAmmo()
     {
-        if (!_config.InfiniteAmmo) Ammo = _config.InitialAmmo;
+        if (!_config.InfiniteAmmoEnabled) Ammo = _config.InitialAmmo;
     }
 
     private void FindAllMuzzlePoints()
@@ -60,6 +55,22 @@ public abstract class Shooting : MonoBehaviour
     private void SetRandomSelectedMuzzlePoint()
     {
         _selectedMuzzlePoint = Random.Range(0, _muzzlePoints.Count);
+    }
+
+    private void SetupAmmoReplenishment()
+    {
+        if (_config.AmmoReplenismentEnabled)
+            StartCoroutine(RefillAmmo());
+    }
+
+    private IEnumerator RefillAmmo()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_config.AmmoRefillDelay);
+
+            Ammo += _config.RefilledAmmoAmount;
+        }
     }
 
     protected abstract void Fire();
@@ -111,7 +122,7 @@ public abstract class Shooting : MonoBehaviour
 
     protected virtual void PerformShot(IMuzzlePoint point)
     {
-        if (Projectile == null) throw new System.Exception("Projectile prefab is not set up!");
+        if (_config.Projectile == null) throw new System.Exception("Projectile prefab is not set up!");
 
         if (Ammo == 0) return;
 
@@ -128,7 +139,7 @@ public abstract class Shooting : MonoBehaviour
         {
             Quaternion dispersion = Quaternion.Euler(point.RotX, point.RotY, Dispersion);
 
-            GameObject projectile = Instantiate(Projectile, point.Pos3D, point.Rot4D * dispersion);
+            GameObject projectile = Instantiate(_config.Projectile, point.Pos3D, point.Rot4D * dispersion);
 
             if (projectile.TryGetComponent(out IDamageDealer d)) d.ProjectileHit += ProjectileHitEventHandler;
             if (projectile.TryGetComponent(out ProjectileMovement m)) m.Speed = ProjectileSpeed;
@@ -139,18 +150,24 @@ public abstract class Shooting : MonoBehaviour
     {
         e.Recipient?.ApplyDamage(Damage);
         PlayHitEffectIfExists(e.HitPos);
+        PlayHitAudioIfExists(e.HitPos);
     }
 
     private void PlayShotAudioIfExists(Vector3 playPos)
     {
-        if (ShotAudio != null) ShotAudio.PlayRandomClip(playPos);
+        if (_config.ShotAudio != null) _config.ShotAudio.PlayRandomClip(playPos);
+    }
+
+    private void PlayHitAudioIfExists(Vector3 playPos)
+    {
+        if (_config.HitAudio != null) _config.HitAudio.PlayRandomClip(playPos);
     }
 
     private void PlayHitEffectIfExists(Vector3 hitPos)
     {
-        if (HitEffect != null)
+        if (_config.HitEffect != null)
         {
-            GameObject hitEffect = Instantiate(HitEffect, hitPos, Quaternion.identity);
+            GameObject hitEffect = Instantiate(_config.HitEffect, hitPos, Quaternion.identity);
             Destroy(hitEffect, _config.HitEffectDuration);
         }
     }

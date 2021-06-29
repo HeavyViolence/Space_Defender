@@ -148,3 +148,12 @@ Implemented SavableDataShell
 v0.0.18:
 Implemented local save/load functionality in DataBase
 Implemented spaceship engine exhaust shader graph
+
+v0.0.19:
+FireConfig functionality expanded
+Shooting functionality expanded
+Implemented PlayerWallet : ScriptableObject
+Implemented CreditsAmountChangedEventArgs : EventArgs
+Implemented DiamondsAmountChangedEventArgs : EventArgs
+Introduced FireAugmentor : ScriptableObject
+DataBase functionality expanded

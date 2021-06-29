@@ -41,6 +41,14 @@ public class FireConfigEditor : Editor
     private SerializedProperty _infiniteAmmo;
     private SerializedProperty _initialAmmo;
 
+    private SerializedProperty _refillAmmo;
+
+    private SerializedProperty _ammoRefillDelay;
+    private SerializedProperty _ammoRefillDelayRandom;
+
+    private SerializedProperty _refilledAmmoAmount;
+    private SerializedProperty _refilledAmmoAmountRandom;
+
     private SerializedProperty _shootingOnLowerBoundReachEnabled;
 
     private SerializedProperty _projectile;
@@ -49,6 +57,7 @@ public class FireConfigEditor : Editor
     private SerializedProperty _hitEffectDuration;
 
     private SerializedProperty _shotAudio;
+    private SerializedProperty _hitAudio;
 
     private void OnEnable()
     {
@@ -90,6 +99,14 @@ public class FireConfigEditor : Editor
         _infiniteAmmo = serializedObject.FindProperty("_infiniteAmmo");
         _initialAmmo = serializedObject.FindProperty("_initialAmmo");
 
+        _refillAmmo = serializedObject.FindProperty("_refillAmmo");
+
+        _ammoRefillDelay = serializedObject.FindProperty("_ammoRefillDelay");
+        _ammoRefillDelayRandom = serializedObject.FindProperty("_ammoRefillDelayRandom");
+
+        _refilledAmmoAmount = serializedObject.FindProperty("_refilledAmmoAmount");
+        _refilledAmmoAmountRandom = serializedObject.FindProperty("_refilledAmmoAmountRandom");
+
         _shootingOnLowerBoundReachEnabled = serializedObject.FindProperty("_shootingOnLowerBoundReachEnabled");
 
         _projectile = serializedObject.FindProperty("_projectile");
@@ -98,6 +115,7 @@ public class FireConfigEditor : Editor
         _hitEffectDuration = serializedObject.FindProperty("_hitEffectDuration");
 
         _shotAudio = serializedObject.FindProperty("_shotAudio");
+        _hitAudio = serializedObject.FindProperty("_hitAudio");
     }
 
     public override void OnInspectorGUI()
@@ -163,7 +181,22 @@ public class FireConfigEditor : Editor
         EditorGUILayout.Separator();
         EditorGUILayout.PropertyField(_infiniteAmmo, new GUIContent("Infinite Ammo"));
 
-        if (!_config.InfiniteAmmo) EditorGUILayout.IntSlider(_initialAmmo, 0, FireConfig.MaxAmmo, "Initial Ammo");
+        if (!_config.InfiniteAmmoEnabled)
+            EditorGUILayout.IntSlider(_initialAmmo, 0, FireConfig.MaxAmmo, "Initial Ammo");
+
+        EditorGUILayout.Separator();
+        EditorGUILayout.PropertyField(_refillAmmo, new GUIContent("Enable Ammo Replenishment"));
+
+        if (_config.AmmoReplenismentEnabled)
+        {
+            EditorGUILayout.Separator();
+            EditorGUILayout.Slider(_ammoRefillDelay, FireConfig.MinAmmoRefillDelay, FireConfig.MaxAmmoRefillDelay, "Ammo Refill Delay");
+            EditorGUILayout.Slider(_ammoRefillDelayRandom, 0f, 1f, "Random Factor");
+
+            EditorGUILayout.Separator();
+            EditorGUILayout.IntSlider(_refilledAmmoAmount, FireConfig.MinRefilledAmmoAmount, FireConfig.MaxRefilledAmmoAmount, "Refilled Ammo Amount");
+            EditorGUILayout.Slider(_refilledAmmoAmountRandom, 0f, 1f, "Random Factor");
+        }
 
         EditorGUILayout.Separator();
         EditorGUILayout.PropertyField(_shootingOnLowerBoundReachEnabled, new GUIContent("Enable Shooting On Lower Bound Reach"));
@@ -187,6 +220,7 @@ public class FireConfigEditor : Editor
 
         EditorGUILayout.Separator();
         EditorGUILayout.PropertyField(_shotAudio, new GUIContent("Shot Audio"));
+        EditorGUILayout.PropertyField(_hitAudio, new GUIContent("Hit Audio"));
 
         serializedObject.ApplyModifiedProperties();
     }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using UnityEngine;
+using System;
 
 public class DataBase : GlobalSingleton<DataBase>
 {
@@ -12,6 +13,8 @@ public class DataBase : GlobalSingleton<DataBase>
     private Dictionary<string, float> _floatData = new Dictionary<string, float>();
     private Dictionary<string, string> _stringData = new Dictionary<string, string>();
     private Dictionary<string, bool> _booleanData = new Dictionary<string, bool>();
+
+    public event EventHandler Loaded;
 
     public string SavePath => Path.Combine(Application.persistentDataPath,
                                            SaveFileName + SaveFileExtension);
@@ -44,7 +47,14 @@ public class DataBase : GlobalSingleton<DataBase>
             _floatData = shell.FloatData;
             _stringData = shell.StringData;
             _booleanData = shell.BooleanData;
+
+            OnLoaded();
         }
+    }
+
+    private void OnLoaded()
+    {
+        Loaded?.Invoke(this, EventArgs.Empty);
     }
 
     public void SaveInt(string key, int value)
