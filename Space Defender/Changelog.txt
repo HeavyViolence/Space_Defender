@@ -157,3 +157,11 @@ Implemented CreditsAmountChangedEventArgs : EventArgs
 Implemented DiamondsAmountChangedEventArgs : EventArgs
 Introduced FireAugmentor : ScriptableObject
 DataBase functionality expanded
+
+v0.0.20.1:
+PlayerWallet functionality improved
+Implemented FireAugmentor
+Bug fixed: SavableDataShell serialization issue
+Bug fixed: FireConfig RefilledAmmoAmount property may return 0
+Implemented DurabilityAugmentor : ScriptableObject
+Bug fixed: PlayerWallet incorrect interaction with DataBase

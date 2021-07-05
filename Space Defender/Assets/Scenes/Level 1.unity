@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 03854909be5fd1a43abfe49764110838, type: 2}
+  _augmentor: {fileID: 11400000, guid: 794ee2938a14fd9428cf14f5ab3345af, type: 2}
 --- !u!114 &1499663822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,6 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 318490f450c22c24fb34591b0bf07ff5, type: 2}
   _healthbar: {fileID: 0}
+  _augmentor: {fileID: 11400000, guid: 1053523897d2cac4b9503fd1f7676b6f, type: 2}
   _collider: {fileID: 1499663820}
 --- !u!1 &1760662966
 GameObject:

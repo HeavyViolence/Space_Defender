@@ -7,6 +7,9 @@ public class PlayerWallet : ScriptableObject
     public const string CreditsKey = "Credits";
     public const string DiamondsKey = "Diamonds";
 
+    public const int DefaultCredits = 1000;
+    public const int DefaultDiamonds = 10;
+
     private int _credits = 0;
     private int _diamonds = 0;
 
@@ -27,25 +30,13 @@ public class PlayerWallet : ScriptableObject
         DiamondsAmountChanged?.Invoke(this, e);
     }
 
-    private void OnEnable()
+    public void TryLoadData()
     {
-        DataBase.Instance.Loaded += LoadedEventhandler;
-    }
+        if (DataBase.Instance.TryGetInt(CreditsKey, out int c)) _credits = c;
+        else _credits = DefaultCredits;
 
-    private void OnDisable()
-    {
-        DataBase.Instance.Loaded -= LoadedEventhandler;
-    }
-
-    private void LoadedEventhandler(object sender, System.EventArgs e)
-    {
-        LoadPlayerWalletData();
-    }
-
-    private void LoadPlayerWalletData()
-    {
-        DataBase.Instance.TryGetInt(CreditsKey, out _credits);
-        DataBase.Instance.TryGetInt(DiamondsKey, out _diamonds);
+        if (DataBase.Instance.TryGetInt(DiamondsKey, out int d)) _diamonds = d;
+        else _diamonds = DefaultDiamonds;
     }
 
     public bool PayWithCredits(int price)

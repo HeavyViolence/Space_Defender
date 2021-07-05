@@ -36,7 +36,14 @@ MonoBehaviour:
   _fireRateRandom: 0.1
   _infiniteAmmo: 0
   _initialAmmo: 500
+  _refillAmmo: 0
+  _ammoRefillDelay: 1
+  _ammoRefillDelayRandom: 0
+  _refilledAmmoAmount: 1
+  _refilledAmmoAmountRandom: 0
+  _shootingOnLowerBoundReachEnabled: 0
   _projectile: {fileID: 8607645010579235968, guid: f49ba630d7f0e094e9d52b82385b1834, type: 3}
   _hitEffect: {fileID: 6586495615094078696, guid: a05ae5fa93ec165479701f2655f56a63, type: 3}
   _hitEffectDuration: 1
   _shotAudio: {fileID: 11400000, guid: 920a1d16bec91c54a82a2ce94c955830, type: 2}
+  _hitAudio: {fileID: 0}

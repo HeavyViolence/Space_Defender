@@ -12,12 +12,6 @@ Implement PlayerPower : SceneSingleton with Value property:
 
 Augmented parameters: max durability, durability regen, speed, projectile speed, damage, fire rate, fire duration, cooldown duration
 
-Implement PlayerAugmentor:
-1) Holds by every player-related script that holds any config data container
-2) Provides a value augmentors for every player-related value
-3) Provides functionality to increase value augmentors
-4) Saves and loads data between sessions to disk
-
 Implement LevelDifficulty : SceneSingleton
 
 Implement LevelDifficultyConfig:

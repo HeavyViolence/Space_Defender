@@ -4,6 +4,7 @@ using System;
 
 public class PlayerDurability : Durability
 {
+    [SerializeField] private DurabilityAugmentor _augmentor = null;
     [SerializeField] private Collider2D _collider = null;
 
     private List<Renderer> _renderers = null;
@@ -12,12 +13,17 @@ public class PlayerDurability : Durability
 
     public static event EventHandler PlayerDied;
 
+    protected override float MaxValue => base.MaxValue + _augmentor.MaxDurabilityBoost;
+
+    protected override float ReconstructionRate => base.ReconstructionRate + _augmentor.ReconstructionBoost;
+
     protected override void Awake()
     {
         base.Awake();
 
         _renderers = FindAllRenderers();
         _listener = SetupAudioListener();
+        _augmentor.TryLoadData();
     }
 
     private List<Renderer> FindAllRenderers()

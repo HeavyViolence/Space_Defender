@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class PlayerShooting : Shooting
 {
+    [SerializeField] private FireAugmentor _augmentor = null;
+
     private PlayerControls _controls = null;
 
     private float _timer = Mathf.Infinity;
+
+    protected override float Damage => base.Damage + _augmentor.DamageBoost;
 
     private bool FirePressed => _controls.Player.Fire.ReadValue<float>() > 0f;
 
@@ -13,7 +17,7 @@ public class PlayerShooting : Shooting
         base.Awake();
 
         _controls = new PlayerControls();
-        DataBase.Instance.SaveBoolean("My bool!", true);
+        _augmentor.TryLoadData();
     }
 
     private void OnEnable()

@@ -24,6 +24,8 @@ public abstract class Durability : MonoBehaviour, IDamageable
 
     protected virtual float MaxValue => _config.MaxDurability;
 
+    protected virtual float ReconstructionRate => _config.ReconstructionRate;
+
     protected float TotalRegainedValue { get; private set; } = 0f;
 
     protected bool DestructionInProgress { get; private set; } = false;
@@ -90,7 +92,7 @@ public abstract class Durability : MonoBehaviour, IDamageable
 
     private void Reconstruct()
     {
-        if (ReconstructionActive)
+        if (ReconstructionActive || ReconstructionRate > 0f)
         {
             if (_config.ReconstructionBounded)
             {
@@ -105,7 +107,7 @@ public abstract class Durability : MonoBehaviour, IDamageable
 
         void Perform()
         {
-            float gainedValue = _config.ReconstructionRate * Time.deltaTime;
+            float gainedValue = ReconstructionRate * Time.deltaTime;
 
             Value += gainedValue;
             TotalRegainedValue += gainedValue;

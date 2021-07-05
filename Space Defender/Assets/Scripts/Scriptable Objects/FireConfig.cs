@@ -203,8 +203,9 @@ public class FireConfig : ScriptableObject
         get
         {
             float rawValue = AuxMath.Randomize(_refilledAmmoAmount, _refilledAmmoAmountRandom);
+            float clampedRawValue = Mathf.Clamp(rawValue, 1f, Mathf.Infinity);
 
-            return Mathf.RoundToInt(rawValue);
+            return Mathf.RoundToInt(clampedRawValue);
         }
     }
 
